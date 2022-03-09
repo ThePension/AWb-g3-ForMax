@@ -33,13 +33,13 @@ Il y aura aussi deux types d'utilisateurs, des utilisateurs authentifiés classi
 
 | numéro | description |
 |---|---|
-| 1 | Visualiser les différents sujets |
-| 2 | Modération des sujets par leur créateur (CRUD) |
+| 1 | Visualiser les différents sujets (données simulées) |
+| 2 | Modération des sujets par leur créateur (CRUD sur des données réelles) |
 | 3 | Espace commentaire + Like, Dislike |
 | 4 | Mode visiteur |
 | 5 | Mise en place des sujets privés avec clé d'accès |
 | 6 | Possibilité de personnaliser son compte |
-| 7 | Notifications |
+| 7 | Notifications asynchrones |
 | 8 | Gestion des comptes (login) |
 | 9 | Sujets favoris plus facilement accessibles |
 | 10 | Ordonner les sujets en fonction de leur référencement |
