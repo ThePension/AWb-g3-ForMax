@@ -1,5 +1,7 @@
 @startuml AW2_Forum_InteractionSchema
 
+top to bottom direction
+
 package index #LightBlue {
     usecase login_page as i1 #LightBlue;line:Black
 }
@@ -21,7 +23,7 @@ package public_topics #LightBlue {
     usecase comment_topic as pubt2 #Red;line:Black
     usecase like_dislike_topic as pubt3 #Red;line:Black
     usecase create_topic as pubt4 #Red;line:Black
-    usecase manage_topic as pubt5 #Purple;line:Black
+    usecase manage_topic_page as pubt5 #Purple;line:Black
 }
 
 package private_topics #Red {
@@ -29,7 +31,14 @@ package private_topics #Red {
     usecase comment_topic as prit2 #Yellow;line:Black
     usecase like_dislike_topic as prit3 #Yellow;line:Black
     usecase create_topic as prit4 #Red;line:Black
-    usecase manage_topic as prit5 #Purple;line:Black
+    usecase manage_topic_page as prit5 #Purple;line:Black
+}
+
+package manage_topic #Purple {
+    usecase update_topic as m1 #Purple;line:Black
+    usecase delete_topic as m2 #Purple;line:Black
+    usecase delete_comment as m3 #Purple;line:Black
+    usecase ban_user as m4 #Purple;line:Black
 }
 
 package account #Red {
@@ -46,14 +55,17 @@ package notification #Red {
 
 i1 --> login #line:blue;line.bold
 
-h3 --> private_topics #line:darkred;line.bold
-h2 --> public_topics #line:darkred;line.bold
+h3 --> private_topics #line:DarkRed;line.bold
+h2 --> public_topics #line:DarkRed;line.bold
 
 l3 --> public_topics #line:blue;line.bold
-l1 --> home #line:darkred;line.bold
+l1 --> home #line:DarkRed;line.bold
 
-h1 --> account #line:darkred;line.bold
+pubt5 --> manage_topic #line:MediumPurple;line.bold
+prit5 --> manage_topic #line:MediumPurple;line.bold
 
-a4 --> notification #line:darkred;line.bold
+h1 --> account #line:DarkRed;line.bold
+
+a4 --> notification #line:DarkRed;line.bold
 
 @enduml
