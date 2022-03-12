@@ -1,0 +1,59 @@
+@startuml AW2_Forum_InteractionSchema
+
+package index #LightBlue {
+    usecase login_page as i1 #LightBlue;line:Black
+}
+
+package login #LightBlue {
+    usecase log_in as l1 #LightBlue;line:Black
+    usecase create_account as l2 #LightBlue;line:Black
+    usecase visit as l3 #LightBlue;line:Black
+}
+
+package home #LightBlue {
+    usecase account_page as h1 #Red;line:Black
+    usecase public_topics_page as h2 #LightBlue;line:Black
+    usecase private_topics_page as h3 #Red;line:Black
+}
+
+package public_topics #LightBlue {
+    usecase read_topic as pubt1 #LightBlue;line:Black
+    usecase comment_topic as pubt2 #Red;line:Black
+    usecase like_dislike_topic as pubt3 #Red;line:Black
+    usecase create_topic as pubt4 #Red;line:Black
+    usecase manage_topic as pubt5 #Purple;line:Black
+}
+
+package private_topics #Red {
+    usecase read_topic as prit1 #Yellow;line:Black
+    usecase comment_topic as prit2 #Yellow;line:Black
+    usecase like_dislike_topic as prit3 #Yellow;line:Black
+    usecase create_topic as prit4 #Red;line:Black
+    usecase manage_topic as prit5 #Purple;line:Black
+}
+
+package account #Red {
+    usecase manage_account as a1 #Red;line:Black
+    usecase delete_account as a2 #Red;line:Black
+    usecase disconnect as a3 #Red;line:Black
+    usecase notification_page as a4 #Red;line:Black
+}
+
+package notification #Red {
+    usecase read_notification as n1 #Red;line:Black
+    usecase delete_notification as n2 #Red;line:Black
+}
+
+i1 --> login #line:blue;line.bold
+
+h3 --> private_topics #line:darkred;line.bold
+h2 --> public_topics #line:darkred;line.bold
+
+l3 --> public_topics #line:blue;line.bold
+l1 --> home #line:darkred;line.bold
+
+h1 --> account #line:darkred;line.bold
+
+a4 --> notification #line:darkred;line.bold
+
+@enduml

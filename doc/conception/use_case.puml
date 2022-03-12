@@ -1,0 +1,28 @@
+@startuml AW2_Forum_UseCase
+left to right direction
+skinparam packageStyle rectangle
+
+actor Guest as g
+actor "Logged User" as lu
+
+rectangle Login {
+  usecase "Login" as L1
+  usecase "Create Account" as L2
+}
+
+rectangle Forum {
+    usecase "Read topics" as F1
+    usecase "Comment, like and dislike topics" as F2
+    usecase "Create topics" as F3
+    usecase "Manage created topics" as F4
+}
+
+g --> L1
+g --> L2
+g --> F1
+
+lu --> F1
+lu --> F2
+lu --> F3
+lu --> F4
+@enduml
