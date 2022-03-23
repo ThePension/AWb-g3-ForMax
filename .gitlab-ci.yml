@@ -1,5 +1,5 @@
 deploy_prod:
-    type: deploy
+    stage: deploy
     environment:
         name: prod
         url: 157.26.77.153
@@ -12,7 +12,7 @@ deploy_prod:
     only:
         - main
 deploy_qual:
-    type: deploy
+    stage: deploy
     environment:
         name: qual
         url: 157.26.77.153
