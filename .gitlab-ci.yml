@@ -22,6 +22,5 @@ deploy_qual:
         - cd /var/www/php/AWb-g3-ForMax/dev
         - git checkout develop
         - git pull origin develop
-        - composer install
     only:
         - develop
