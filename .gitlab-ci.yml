@@ -1,0 +1,27 @@
+deploy_prod:
+    type: deploy
+    environment:
+        name: prod
+        url: 157.26.77.153
+    tags:
+        - appweb
+    script:
+        - cd /var/www/php/AWb-g3-ForMax/awb-g3-formax/master
+        - git checkout main
+        - git pull origin main
+    only:
+        - main
+deploy_qual:
+    type: deploy
+    environment:
+        name: qual
+        url: 157.26.77.153
+    tags:
+        - appweb
+    script:
+        - cd /var/www/php/AWb-g3-ForMax/awb-g3-formax/dev
+        - git checkout develop
+        - git pull origin develop
+        - composer install
+    only:
+        - develop
