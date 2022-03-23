@@ -6,7 +6,7 @@ deploy_prod:
     tags:
         - appweb
     script:
-        - cd /var/www/php/AWb-g3-ForMax/awb-g3-formax/master
+        - cd /var/www/php/AWb-g3-ForMax/main
         - git checkout main
         - git pull origin main
     only:
@@ -19,7 +19,7 @@ deploy_qual:
     tags:
         - appweb
     script:
-        - cd /var/www/php/AWb-g3-ForMax/awb-g3-formax/dev
+        - cd /var/www/php/AWb-g3-ForMax/dev
         - git checkout develop
         - git pull origin develop
         - composer install
