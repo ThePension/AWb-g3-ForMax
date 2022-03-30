@@ -5,6 +5,13 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP DATABASE IF EXISTS aw2_formax;
+CREATE DATABASE aw2_formax
+	CHARACTER SET 'utf8mb4'
+	COLLATE 'utf8mb4_unicode_ci';
+
+USE aw2_formax;
+
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `title` char(50) NOT NULL,
