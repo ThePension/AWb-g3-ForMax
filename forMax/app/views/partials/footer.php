@@ -6,7 +6,7 @@
             <!-- Copyright -->
             <div class="text-center p-3 text-light">
                 © 2022 Copyright:
-                <a class="text-dark text-light" href="https://he-arc.ch">HE-Arc.ch</a>
+                <a class="text-dark text-light" href="https://www.he-arc.ch">HE-Arc.ch</a>
             </div>
             <!-- Copyright -->
         </footer>
