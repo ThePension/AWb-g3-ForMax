@@ -34,7 +34,7 @@ class TopicController
 
     public function showAllTopics()
     {
-        // TODO
+        
     }
 
     public function makeFavorite()
