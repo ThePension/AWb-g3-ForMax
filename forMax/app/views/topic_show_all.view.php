@@ -11,7 +11,7 @@ require('partials/header.php');
 		<?php
 		foreach ($topics as $topic)
         {
-			echo $topic->asHTMLFlexBoxItem(); // TO RENAME
+			echo $topic->getAsBootstrapGridForHomePage(); // TO RENAME
 		}
 		?>
 	</div>

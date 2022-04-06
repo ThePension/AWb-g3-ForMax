@@ -42,7 +42,6 @@ class TopicController
         return Helper::view("topic_show_all",[
             'topics' => $topics
         ]);
-
     }
 
     public function makeFavorite()
