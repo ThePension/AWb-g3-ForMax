@@ -78,10 +78,11 @@ class Topic extends Model
         //Helper::display($this->name);
 
         $topicHtml = 
-            "<div class='card'>
-                <div class='card-header'>"
+            "<div class='card mt-3'>
+                <div class='card-header'>
+                created by "
                 .
-                    htmlentities($this->name)
+                    htmlentities($this->fk_user)
                 .
                 "</div>
                 <div class='card-body'>
@@ -90,16 +91,23 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>
-                    <a href='/". $pathToTheTopic ."' class='btn btn-info'>Read further</a>
-                    <p>created on "
-                    .
-                        htmlentities($this->creation_timestamp)
-                    .
-                    " | updated on "
-                    .
-                        htmlentities($this->update_timestamp)
-                    .
-                    "</p>
+                    <a href='/". $pathToTheTopic ."' class='btn btn-info text-light'>Read further</a>
+                </div>
+                <div class='card-footer text-muted container'>
+                    <div class='row'>
+                        <p class='col text-start'>
+                            created on "
+                            .
+                                htmlentities($this->creation_timestamp)
+                            .   
+                        "</p>
+                        <p class='col text-end'>
+                            updated on "
+                            .
+                                htmlentities($this->update_timestamp)
+                            .   
+                        "</p>
+                    </div>
                 </div>
             </div>";
 
