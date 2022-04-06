@@ -7,6 +7,8 @@ require('partials/header.php');
 <main>
 	<h1 id="h1_topics">Topics</h1>
 
+    
+
 	<div class="container">
 		<?php
 		foreach ($topics as $topic)

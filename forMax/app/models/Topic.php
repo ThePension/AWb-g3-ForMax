@@ -73,30 +73,32 @@ class Topic extends Model
     {
         $install_prefix = App::get('config')['install_prefix'];
 
-        $pathToTheTopic = urlencode("/" + $install_prefix + "/topic_show?id=" + $this->id);
+        $pathToTheTopic = urlencode("/" . $install_prefix . "/topic_show?id=" . $this->id);
+
+        //Helper::display($this->name);
 
         $topicHtml = 
             "<div class='card'>
                 <div class='card-header'>"
-                +
-                    htmlentities($this->name);
-                +
+                .
+                    htmlentities($this->name)
+                .
                 "</div>
                 <div class='card-body'>
                     <p class='card-text text-truncate'>"
-                    +
-                        htmlentities($this->content);
-                    +
+                    .
+                        htmlentities($this->content)
+                    .
                     "</p>
-                    <a href='/"+ $pathToTheTopic +"' class='btn btn-info'>Read further</a>
+                    <a href='/". $pathToTheTopic ."' class='btn btn-info'>Read further</a>
                     <p>created on "
-                    +
-                        htmlentities($this->creation_timestamp);
-                    +
+                    .
+                        htmlentities($this->creation_timestamp)
+                    .
                     " | updated on "
-                    +
-                        htmlentities($this->update_timestamp);
-                    +
+                    .
+                        htmlentities($this->update_timestamp)
+                    .
                     "</p>
                 </div>
             </div>";
@@ -106,6 +108,6 @@ class Topic extends Model
 
     public function getAsBootstrapGridForTopicPage()
     {
-
+        
     }
 }
