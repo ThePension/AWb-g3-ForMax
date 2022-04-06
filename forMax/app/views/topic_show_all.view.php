@@ -10,12 +10,14 @@ require('partials/header.php');
     
 
 	<div class="container">
-		<?php
-		foreach ($topics as $topic)
-        {
-			echo $topic->getAsBootstrapGridForHomePage(); // TO RENAME
-		}
-		?>
+		<div class="row">
+			<?php
+			foreach ($topics as $topic)
+			{
+				echo $topic->getAsBootstrapGridForHomePage();
+			}
+			?>
+		</div>
 	</div>
 </main>
 

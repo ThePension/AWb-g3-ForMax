@@ -76,7 +76,7 @@ class Topic extends Model
         $pathToTheTopic = urlencode("/" . $install_prefix . "/topic_show?id=" . $this->id);
 
         $topicHtml = 
-            "<div class='card mt-3'>
+            "<div class='col-sm m-1 card mt-3'>
                 <div class='card-header'>
                 created by "
                 .
@@ -84,7 +84,10 @@ class Topic extends Model
                 .
                 "</div>
                 <div class='card-body'>
-                    <p class='card-text text-truncate'>"
+                    <h5 class='card-title'>".
+                        htmlentities($this->name)
+                    ."</h5>
+                    <p class='card-text text-truncate-container'>"
                     .
                         htmlentities($this->content)
                     .
