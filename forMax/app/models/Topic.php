@@ -75,8 +75,6 @@ class Topic extends Model
 
         $pathToTheTopic = urlencode("/" . $install_prefix . "/topic_show?id=" . $this->id);
 
-        //Helper::display($this->name);
-
         $topicHtml = 
             "<div class='card'>
                 <div class='card-header'>"
@@ -108,6 +106,6 @@ class Topic extends Model
 
     public function getAsBootstrapGridForTopicPage()
     {
-        
+
     }
 }
