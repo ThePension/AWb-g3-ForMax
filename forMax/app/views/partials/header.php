@@ -1,3 +1,7 @@
+<?php
+    $install_prefix = App::get('config')['install_prefix'];
+?>
+
 <!DOCTYPE html>
 
 <html>
