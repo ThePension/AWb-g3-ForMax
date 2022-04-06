@@ -1,5 +1,7 @@
 <?php
 
+require "app/models/Topic.php";
+
 class TopicController
 {
     public function showAddTopicView()
@@ -34,7 +36,13 @@ class TopicController
 
     public function showAllTopics()
     {
-        // TODO
+        // HERE
+        $topics = Topic::fetchAll();
+
+        return Helper::view("topic_show_all",[
+            'topics' => $topics
+        ]);
+
     }
 
     public function makeFavorite()
