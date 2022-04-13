@@ -1,7 +1,5 @@
 <?php
 
-require "app/models/Topic.php";
-
 class TopicController
 {
     public function showAddTopicView()

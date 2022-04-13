@@ -1,6 +1,6 @@
 <?php
 
-class TopicController
+class CommentController
 {
     public function addComment()
     {

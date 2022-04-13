@@ -80,7 +80,7 @@ class Topic extends Model
                 <div class='card-header'>
                 created by "
                 .
-                    htmlentities($this->fk_user)
+                    htmlentities($this->howWroteTopic())
                 .
                 "</div>
                 <div class='card-body'>
@@ -117,6 +117,48 @@ class Topic extends Model
 
     public function getAsBootstrapGridForTopicPage()
     {
+        $topicHtml = 
+            "<div class='col-sm m-1 card mt-3'>
+                <div class='card-header'>
+                created by "
+                .
+                    htmlentities($this->howWroteTopic())
+                .
+                "</div>
+                <div class='card-body'>
+                    <h5 class='card-title'>".
+                        htmlentities($this->name)
+                    ."</h5>
+                    <p class='card-text'>"
+                    .
+                        htmlentities($this->content)
+                    .
+                    "</p>
+                </div>
+                <div class='card-footer text-muted container'>
+                    <div class='row'>
+                        <p class='col text-start'>
+                            created on "
+                            .
+                                htmlentities($this->creation_timestamp)
+                            .   
+                        "</p>
+                        <p class='col text-end'>
+                            updated on "
+                            .
+                                htmlentities($this->update_timestamp)
+                            .   
+                        "</p>
+                    </div>
+                </div>
+            </div>";
 
+        return $topicHtml;
+    }
+
+    private function howWroteTopic()
+    {
+        $user = User::fetchId($this->fk_user);
+        return $user->username;
     }
 }
