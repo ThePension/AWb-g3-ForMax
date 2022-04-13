@@ -115,6 +115,10 @@ class Topic extends Model
 
     public function getAsBootstrapGridForTopicPage()
     {
+        $install_prefix = App::get('config')['install_prefix'];
+
+        $pathToTheTopic = $install_prefix . "/topic_delete?id=" . htmlentities($this->id);
+
         $topicHtml = 
             "<div class='col-sm m-1 card mt-3'>
                 <div class='card-header'>
@@ -132,6 +136,7 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>
+                    <a href='/". $pathToTheTopic ."' class='btn btn-info text-light'>Delete this topic</a>
                 </div>
                 <div class='card-footer text-muted container'>
                     <div class='row'>
@@ -152,6 +157,11 @@ class Topic extends Model
             </div>";
 
         return $topicHtml;
+    }
+
+    public function remove()
+    {
+        Model::delete('topic', $this->id);
     }
 
     private function howWroteTopic()

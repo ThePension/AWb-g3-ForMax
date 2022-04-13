@@ -53,7 +53,16 @@ class TopicController
 
     public function deleteTopic()
     {
-        // TODO
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+
+            $topic = Topic::fetchId($id);
+
+            $topic->remove();
+        }
+        
+        Helper::redirect(App::get('config')['install_prefix'] . "/topic_show_all");
     }
 
     public function showUpdateTopicView()
