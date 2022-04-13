@@ -12,12 +12,12 @@ class Topic extends Model
 
     public function __set($property, $value)
     {
-        $this->property= $value;
+        $this->$property= $value;
     }
 
     public function __get($property)
     {
-        return $this->property;
+        return $this->$property;
     }
 
     public static function fetchAll()
@@ -53,20 +53,18 @@ class Topic extends Model
 
     public function save()
     {
-        // TODO : Adapt for our version
+        $user_id = 1; // TO DO LATER
 
-        // old version
-        /*
-        $user_id = $_SESSION[Login::$UserSessionId];
-        $task_values = [
-            "description" => $this->description,
-            "completed" => $this->completed,
-            "deadline" => $this->deadline,
+        $topic_values = [
+            "name" => $this->name,
+            "content" => $this->content,
+            "rank" => $this->rank,
+            "update_timestamp" => $this->update_timestamp,
+            "creation_timestamp" => $this->creation_timestamp,
             "fk_user" => $user_id
         ];
 
-        Model::create("task", $task_values);
-        */
+        Model::create("topic", $topic_values);
     }
 
     public function getAsBootstrapGridForHomePage()
