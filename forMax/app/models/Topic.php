@@ -73,7 +73,7 @@ class Topic extends Model
     {
         $install_prefix = App::get('config')['install_prefix'];
 
-        $pathToTheTopic = urlencode("/" . $install_prefix . "/topic_show?id=" . $this->id);
+        $pathToTheTopic = "/" . $install_prefix . "/topic_show?id=" . htmlentities($this->id);
 
         $topicHtml = 
             "<div class='card'>
@@ -88,7 +88,7 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>
-                    <a href='/". $pathToTheTopic ."' class='btn btn-info'>Read further</a>
+                    <a href='". $pathToTheTopic ."' class='btn btn-info'>Read further</a>
                     <p>created on "
                     .
                         htmlentities($this->creation_timestamp)

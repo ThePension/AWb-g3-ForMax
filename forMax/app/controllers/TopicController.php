@@ -17,6 +17,17 @@ class TopicController
     public function showTopicView()
     {
         // TODO
+        // ICI
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+
+            $topic = Topic::fetchId($id);
+
+            return Helper::view("topic_show",[
+                'topic' => $topic
+            ]);
+        }
     }
 
     public function deleteTopic()
@@ -36,7 +47,6 @@ class TopicController
 
     public function showAllTopics()
     {
-        // HERE
         $topics = Topic::fetchAll();
 
         return Helper::view("topic_show_all",[
