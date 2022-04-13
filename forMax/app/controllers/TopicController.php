@@ -4,7 +4,7 @@ class TopicController
 {
     public function showAddTopicView()
     {
-        // TODO
+        return Helper::view("topic_add");
     }
 
     public function addTopic()
