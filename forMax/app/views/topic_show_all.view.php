@@ -1,12 +1,12 @@
 <?php
-$title = "Topics page";
+$title = "Topics";
 $active = 'topics';
 require('partials/header.php');
 ?>
 
 <main>
 	<div class="container">
-		<a href='/<?= $install_prefix?>/topic_add' class='btn btn-info text-light'>Add topic</a>
+		<a href='/<?= $install_prefix?>/topic_add' class='btn btn-success text-light'>Create new topic</a>
 
 		<div class="row">
 			<?php

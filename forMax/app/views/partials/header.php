@@ -21,5 +21,15 @@
 
     <main class="container">
         <div class="row">
-            <h1 class="mb-3 mt-3" id="h1_topics"><?= $title ?></h1>
+            <?php
+                if(isset($pageTitle))
+                {
+                    echo '<h1 class="mb-3 mt-3" id="h1_' . $pageTitle . '">' . $pageTitle . '</h1>';
+                }
+                else
+                {
+                    echo '<h1 class="mb-3 mt-3" id="h1_' . $title . '">' . $title . '</h1>';
+                }
+            ?>
+            
         

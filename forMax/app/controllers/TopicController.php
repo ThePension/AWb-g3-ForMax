@@ -22,7 +22,7 @@ class TopicController
             $topic->creation_timestamp = date("Y-m-d H:i:s");
             $topic->update_timestamp = date("Y-m-d H:i:s");
 
-            // TO DO
+            // TODO
             $topic->rank = 0;
 
             $topic->save();
@@ -37,8 +37,6 @@ class TopicController
 
     public function showTopicView()
     {
-        // TODO
-        // ICI
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];

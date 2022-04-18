@@ -76,7 +76,7 @@ class Topic extends Model
         $topicHtml = 
             "<div class='col-sm m-1 card mt-3'>
                 <div class='card-header'>
-                created by "
+                Author : "
                 .
                     htmlentities($this->howWroteTopic())
                 .
@@ -117,26 +117,21 @@ class Topic extends Model
     {
         $install_prefix = App::get('config')['install_prefix'];
 
-        $pathToTheTopic = $install_prefix . "/topic_delete?id=" . htmlentities($this->id);
+        $deletePath = $install_prefix . "/topic_delete?id=" . htmlentities($this->id);
+        $editPath = $install_prefix . "/topic_update?id=" . htmlentities($this->id);
 
         $topicHtml = 
             "<div class='col-sm m-1 card mt-3'>
-                <div class='card-header'>
-                created by "
-                .
-                    htmlentities($this->howWroteTopic())
-                .
-                "</div>
                 <div class='card-body'>
-                    <h5 class='card-title'>".
-                        htmlentities($this->name)
-                    ."</h5>
                     <p class='card-text'>"
                     .
                         htmlentities($this->content)
                     .
                     "</p>
-                    <a href='/". $pathToTheTopic ."' class='btn btn-info text-light'>Delete this topic</a>
+                    <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
+                        <a href='/". $editPath ."' class='btn btn-secondary'>Edit</a>
+                        <a href='/". $deletePath ."' class='btn btn-danger'>Delete</a>
+                    </div>
                 </div>
                 <div class='card-footer text-muted container'>
                     <div class='row'>
@@ -157,6 +152,11 @@ class Topic extends Model
             </div>";
 
         return $topicHtml;
+    }
+
+    public function getTitleForTopicPage()
+    {
+        return htmlentities($this->name) . ", created by " . htmlentities($this->howWroteTopic());
     }
 
     public function remove()
