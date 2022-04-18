@@ -9,7 +9,7 @@ class TopicController
 
     public function addTopic()
     {
-        $install_prefix = $install_prefix = App::get('config')['install_prefix'];
+        $install_prefix = App::get('config')['install_prefix'];
 
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
         $topic_content = $_POST['topic_content'] ?? "";
@@ -65,12 +65,45 @@ class TopicController
 
     public function showUpdateTopicView()
     {
-        // TODO
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+
+            $topic = Topic::fetchId($id);
+
+            return Helper::view("topic_update",[
+                'topic' => $topic
+            ]);
+        }
     }
 
     public function updateTopic()
     {
-        // TODO
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if(isset($_POST['id']))
+            {
+                $topic = Topic::fetchId($_POST['id']);
+
+                $topic_name = $_POST['topic_name'] ?? "";
+                $topic_content = $_POST['topic_content'] ?? "";
+        
+                if($topic_name != "" && $topic_content != "")
+                {
+                    $topic->name = $topic_name;
+                    $topic->content = $topic_content;
+        
+                    $topic->modify();
+                }
+                else
+                {
+                    throw new Exception("Topic modification : incorrect argument(s)");
+                }
+            }
+        }
+
+        $install_prefix = App::get('config')['install_prefix'];
+        Helper::redirect($install_prefix . "/topic_show_all");
     }
 
     public function showAllTopics()

@@ -159,6 +159,17 @@ class Topic extends Model
         return htmlentities($this->name) . ", created by " . htmlentities($this->howWroteTopic());
     }
 
+    public function modify()
+    {
+        $params = [
+            'name' => $this->name,
+            'content' => $this->content
+        ];
+
+        Model::update("topic", $this->id, $params);
+
+    }
+
     public function remove()
     {
         Model::delete('topic', $this->id);
