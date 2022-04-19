@@ -4,6 +4,7 @@ $router->define([
   // '' => 'controllers/index.php',  // by conventions all controllers are in 'controllers' folder
   '' => 'IndexController',
   'index' => 'IndexController',
+  'about' => 'IndexController@about',
   'login' => 'UserController@showLoginView',
   'login_do' => 'UserController@login',
   'logout' => 'UserController@logout',

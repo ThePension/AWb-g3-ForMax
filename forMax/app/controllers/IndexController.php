@@ -6,4 +6,9 @@ class IndexController
     {
         return Helper::view("index");
     }
+
+    public function about()
+    {
+        return Helper::view("about");
+    }
 }
