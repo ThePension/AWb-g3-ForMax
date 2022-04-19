@@ -163,7 +163,9 @@ class Topic extends Model
     {
         $params = [
             'name' => $this->name,
-            'content' => $this->content
+            'content' => $this->content,
+            "creation_timestamp" => $this->creation_timestamp,
+            'update_timestamp' => date("Y-m-d H:i:s")
         ];
 
         Model::update("topic", $this->id, $params);
