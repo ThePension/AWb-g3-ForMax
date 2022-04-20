@@ -19,9 +19,16 @@ deploy_qual:
     tags:
         - appweb
     script:
+<<<<<<< HEAD
         - cd /var/www/php/AWb-g3-ForMax/dev
         - git checkout develop
         - git pull origin develop
         - composer install
+=======
+        - cd /var/www/php/
+        - git checkout develop
+        - git fetch
+        - git checkout HEAD formax/
+>>>>>>> 9a8047f (Update .gitlab-ci.yml)
     only:
         - develop
