@@ -168,8 +168,8 @@ class Topic extends Model
                     .
                     "</p>
                     <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
-                        <a href='/". $editPath ."' class='btn btn-secondary'>Edit</a>
-                        <a href='/". $deletePath ."' class='btn btn-danger'>Delete</a>
+                        <a href='/". $editPath ."' class='btn btn-secondary'><i class=\"fa-solid fa-pen\"></i></a>
+                        <a href='/". $deletePath ."' class='btn btn-danger'><i class=\"fa-solid fa-trash-can\"></i></a>
                     </div>
                 </div>
                 <div class='card-footer text-muted container'>
