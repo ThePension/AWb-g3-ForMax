@@ -19,8 +19,9 @@ deploy_qual:
     tags:
         - appweb
     script:
-        - cd /var/www/php/AWb-g3-ForMax/dev
+        - cd /var/www/php/
         - git checkout develop
-        - git pull origin develop
+        - git fetch
+        - git checkout HEAD formax/
     only:
         - develop
