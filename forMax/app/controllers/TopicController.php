@@ -2,11 +2,22 @@
 
 class TopicController
 {
+        
+    /**
+     * showAddTopicView
+     *
+     * @return void
+     */
     public function showAddTopicView()
     {
         return Helper::view("topic_add");
     }
-
+    
+    /**
+     * addTopic
+     *
+     * @return void
+     */
     public function addTopic()
     {
         $install_prefix = App::get('config')['install_prefix'];
@@ -34,7 +45,12 @@ class TopicController
 
         Helper::redirect($install_prefix . "/topic_show_all");
     }
-
+    
+    /**
+     * showTopicView
+     *
+     * @return void
+     */
     public function showTopicView()
     {
         if(isset($_GET['id']))
@@ -48,7 +64,12 @@ class TopicController
             ]);
         }
     }
-
+    
+    /**
+     * deleteTopic
+     *
+     * @return void
+     */
     public function deleteTopic()
     {
         if(isset($_GET['id']))
@@ -62,7 +83,12 @@ class TopicController
         
         Helper::redirect(App::get('config')['install_prefix'] . "/topic_show_all");
     }
-
+    
+    /**
+     * showUpdateTopicView
+     *
+     * @return void
+     */
     public function showUpdateTopicView()
     {
         if(isset($_GET['id']))
@@ -76,7 +102,12 @@ class TopicController
             ]);
         }
     }
-
+    
+    /**
+     * updateTopic
+     *
+     * @return void
+     */
     public function updateTopic()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
@@ -105,7 +136,12 @@ class TopicController
         $install_prefix = App::get('config')['install_prefix'];
         Helper::redirect($install_prefix . "/topic_show_all");
     }
-
+    
+    /**
+     * showAllTopics
+     *
+     * @return void
+     */
     public function showAllTopics()
     {
         $topics = Topic::fetchAll();
@@ -127,7 +163,12 @@ class TopicController
             'topics' => $topics
         ]);
     }
-
+    
+    /**
+     * makeFavorite
+     *
+     * @return void
+     */
     public function makeFavorite()
     {
         // TODO

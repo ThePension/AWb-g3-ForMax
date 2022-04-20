@@ -9,17 +9,35 @@ class Topic extends Model
     private $update_timestamp;
     private $creation_timestamp;
     private $fk_user;
-
+ 
+    /**
+     * __set
+     *
+     * @param  mixed $property Is the property name
+     * @param  mixed $value is the value to be set
+     * @return void
+     */
     public function __set($property, $value)
     {
         $this->$property= $value;
     }
-
+    
+    /**
+     * __get
+     *
+     * @param  mixed $property The property name
+     * @return mixed The property value
+     */
     public function __get($property)
     {
         return $this->$property;
     }
-
+   
+    /**
+     * fetchAll
+     *
+     * @return Topic array that contains all the topics
+     */
     public static function fetchAll()
     {
         $allTopics = Model::readAll("topic", "Topic");
@@ -42,7 +60,13 @@ class Topic extends Model
         });
         */
     }
-
+    
+    /**
+     * fetchId
+     *
+     * @param  mixed $id The ID of the topic
+     * @return Topic The topic that is matching the ID
+     */
     public static function fetchId($id)
     {
         // ASSUMPTION
@@ -50,7 +74,12 @@ class Topic extends Model
 
         return Model::readById("topic", "Topic", $id);
     }
-
+    
+    /**
+     * save The topic in the database
+     *
+     * @return void
+     */
     public function save()
     {
         $user_id = 1; // TO DO LATER
@@ -66,7 +95,12 @@ class Topic extends Model
 
         Model::create("topic", $topic_values);
     }
-
+    
+    /**
+     * getAsBootstrapGridForHomePage
+     *
+     * @return string That contains the HTML code for displaying the topic in the homepage
+     */
     public function getAsBootstrapGridForHomePage()
     {
         $install_prefix = App::get('config')['install_prefix'];
@@ -78,7 +112,7 @@ class Topic extends Model
                 <div class='card-header'>
                 Author : "
                 .
-                    htmlentities($this->howWroteTopic())
+                    htmlentities($this->whoWroteTopic())
                 .
                 "</div>
                 <div class='card-body'>
@@ -112,7 +146,12 @@ class Topic extends Model
 
         return $topicHtml;
     }
-
+    
+    /**
+     * getAsBootstrapGridForTopicPage
+     *
+     * @return string That contains the HTML code for displaying the topic in the topicpage
+     */
     public function getAsBootstrapGridForTopicPage()
     {
         $install_prefix = App::get('config')['install_prefix'];
@@ -153,12 +192,22 @@ class Topic extends Model
 
         return $topicHtml;
     }
-
+    
+    /**
+     * getTitleForTopicPage
+     *
+     * @return string
+     */
     public function getTitleForTopicPage()
     {
-        return htmlentities($this->name) . ", created by " . htmlentities($this->howWroteTopic());
+        return htmlentities($this->name) . ", created by " . htmlentities($this->whoWroteTopic());
     }
-
+    
+    /**
+     * modify the topic in the database
+     *
+     * @return void
+     */
     public function modify()
     {
         $params = [
@@ -171,13 +220,23 @@ class Topic extends Model
         Model::update("topic", $this->id, $params);
 
     }
-
+    
+    /**
+     * remove the topic from the database
+     *
+     * @return void
+     */
     public function remove()
     {
         Model::delete('topic', $this->id);
     }
-
-    private function howWroteTopic()
+    
+    /**
+     * whoWroteTopic
+     *
+     * @return string the author of the topic
+     */
+    private function whoWroteTopic()
     {
         $user = User::fetchId($this->fk_user);
         return $user->username;
