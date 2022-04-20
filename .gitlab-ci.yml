@@ -19,8 +19,7 @@ deploy_qual:
     tags:
         - appweb
     script:
-        - cd /var/www/php/
-        - git checkout develop
+        - cd /var/www/php
         - git fetch
         - git checkout HEAD formax/
     only:
