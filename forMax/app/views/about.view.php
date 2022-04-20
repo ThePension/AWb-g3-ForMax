@@ -1,5 +1,5 @@
 <?php
-    $title = "Home";
+    $title = "About us";
     require('partials/header.php')
 ?>
 

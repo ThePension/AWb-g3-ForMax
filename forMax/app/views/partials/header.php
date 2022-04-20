@@ -1,12 +1,34 @@
+<?php
+    $install_prefix = App::get('config')['install_prefix'];
+?>
+
 <!DOCTYPE html>
 
 <html>
 <head>
 	<title><?= htmlentities($title) ?></title>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style1.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/082cac850c.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
     <?php require('nav.php') ?>
+
+    <main class="container">
+        <div class="row">
+            <?php
+                if(isset($pageTitle))
+                {
+                    echo '<h1 class="mb-3 mt-3" id="h1_' . $pageTitle . '">' . $pageTitle . '</h1>';
+                }
+                else
+                {
+                    echo '<h1 class="mb-3 mt-3" id="h1_' . $title . '">' . $title . '</h1>';
+                }
+            ?>
+            
+        
