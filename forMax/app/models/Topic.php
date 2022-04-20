@@ -47,18 +47,7 @@ class Topic extends Model
 
     public static function fetchAllOrderBy($column)
     {
-        // TODO : Adapt for our case
-
-        // old version
-        /*
-        $allTasks = Model::readAllOrderBy("task", "Task", $column);
-
-        return array_filter($allTasks, function ($v)
-        {
-            $user_id = $_SESSION[Login::$UserSessionId];
-            return $v->fk_user == $user_id;
-        });
-        */
+        // TODO
     }
     
     /**
