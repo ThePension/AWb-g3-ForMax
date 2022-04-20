@@ -18,8 +18,8 @@
           <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/account">Account</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form method="GET" action="/<?= $install_prefix ?>/topic_show_all" class="d-flex">
+        <input class="form-control me-2" name="search" type="search" placeholder="Search" <?php if(isset($_GET['search'])) echo "value=\"". $_GET['search'] ."\""; ?>aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </div>

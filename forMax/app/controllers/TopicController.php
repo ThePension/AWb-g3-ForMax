@@ -110,6 +110,19 @@ class TopicController
     {
         $topics = Topic::fetchAll();
 
+        // SEARCH PARAMETER
+        if(isset($_GET['search']))
+        {
+            $search = trim($_GET['search']);
+
+            if($search != "")
+            {
+                $topics = array_filter($topics, function($topic) use (&$search) {
+                    return (strstr($topic->name, $search) || strstr($topic->content, $search)) !== false;
+                 });
+            }
+        }
+
         return Helper::view("topic_show_all",[
             'topics' => $topics
         ]);
