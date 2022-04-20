@@ -20,6 +20,8 @@ deploy_qual:
         - appweb
     script:
         - cd /var/www/php
+        - git init
+        - git remote add git@gitlab-etu.ing.he-arc.ch:theo.vuilliom/awb-g3-formax.git
         - git fetch
         - git checkout HEAD formax/
     only:
