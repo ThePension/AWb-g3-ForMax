@@ -20,5 +20,6 @@ $router->define([
   'comment_add' => 'CommentController@addComment',
   'comment_update' => 'CommentController@updateComment',
   'comment_delete' => 'CommentController@removeComment',
-  'topic_addFavorite' => 'TopicController@makeFavorite'
+  'topic_addFavorite' => 'TopicController@makeFavorite',
+  'account' => 'UserController@account'
 ]);

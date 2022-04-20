@@ -26,4 +26,11 @@ class UserController
     {
         // TODO
     }
+
+    public function account()
+    {
+        // TODO
+        
+        return Helper::view("account");
+    }
 }
