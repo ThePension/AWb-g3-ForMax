@@ -19,10 +19,8 @@ deploy_qual:
     tags:
         - appweb
     script:
-        - cd /var/www/php
-        - git init
-        - git remote add git@gitlab-etu.ing.he-arc.ch:theo.vuilliom/awb-g3-formax.git
-        - git fetch
-        - git checkout HEAD formax/
+        - cd /var/www/php/AWb-g3-ForMax/dev
+        - git checkout develop
+        - git pull origin develop
     only:
         - develop
