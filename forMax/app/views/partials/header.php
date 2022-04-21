@@ -4,8 +4,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
 	<title><?= htmlentities($title) ?></title>
     <link rel="stylesheet" type="text/css" href="public/css/style1.css">
 
