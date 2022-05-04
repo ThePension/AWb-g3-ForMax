@@ -1,5 +1,6 @@
 <?php
-$title = "Add topic";
+$title = "ForMax - topic";
+$pageTitle = "Write a new topic";
 $active = 'topics';
 require('partials/header.php');
 ?>

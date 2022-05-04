@@ -1,5 +1,6 @@
 <?php
-    $title = "Login";
+    $title = "ForMax - login";
+    $pageTitle = "";
     require('partials/header.php')
 ?>
 
