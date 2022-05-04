@@ -37,5 +37,28 @@ class Helper
         exit();
     }
 
+    public static function userAuthenticated()
+    {
+        if (App::get('config')['debug_mode']) {
+            return true;
+        }
 
+        // TODO : ok if the user is logged
+        //return isset($_SESSION[User::$UserSessionId]);
+
+        return false;
+    }
+
+    public static function routeAuthorized($uri)
+    {
+        if (App::get('config')['debug_mode']) {
+            return true;
+        }
+
+        $tempTab = explode("/", $uri);
+        $path = end($tempTab);
+        reset($tempTab);
+
+        return in_array($path, App::get('config')['routes_authorized'], true);
+    }
 }
