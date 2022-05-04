@@ -52,7 +52,7 @@ INSERT INTO `topic` (`id`, `name`, `content`, `rank`, `update_timestamp`, `creat
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` char(50) NOT NULL,
+  `username` char(50) NOT NULL UNIQUE,
   `password` char(255) NOT NULL,
   `description` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
