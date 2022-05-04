@@ -4,7 +4,7 @@ class UserController
 {
     public function showLoginView()
     {
-        // TODO
+        Helper::view("login");
     }
 
     public function login()
