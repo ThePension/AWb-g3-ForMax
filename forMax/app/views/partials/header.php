@@ -20,7 +20,7 @@
     <?php require('nav.php') ?>
 
     <main class="container">
-        <div class="row">
+        <div class="row justify-content-md-center">
             <?php
                 if(isset($pageTitle))
                 {
@@ -29,6 +29,23 @@
                 else
                 {
                     echo '<h1 class="mb-3 mt-3" id="h1_' . $title . '">' . $title . '</h1>';
+                }
+            ?>
+
+            <?php
+                // Error display
+                if(isset($_SESSION['error_title']) && isset($_SESSION['error_description']))
+                {
+                    echo 
+                        "<div class='col-6 card text-white bg-danger mb-3'>" .
+                            "<div class='card-body'>" .
+                                "<h5 class='card-title'>" . $_SESSION['error_title'] . "</h5>" .
+                                "<p class='card-text'>" . $_SESSION['error_description'] . " </p>" .
+                            "</div>" .
+                        "</div>";
+
+                    unset($_SESSION['error_title']);
+                    unset($_SESSION['error_description']);
                 }
             ?>
             
