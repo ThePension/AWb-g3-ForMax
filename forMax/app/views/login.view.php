@@ -27,6 +27,8 @@
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-info btn-block btn-lg text-body text-light">Login</button>
                             </div>
+
+                            <p class="text-center text-muted mt-5 mb-0">Haven't created an account yet ? <a href="/<?= $install_prefix ?>/register" class="fw-bold text-body"><u>Register here</u></a></p>
                         </form>
                     </div>
                 </div>
