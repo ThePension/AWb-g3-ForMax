@@ -86,6 +86,27 @@ abstract class Model
 
         return $statement->fetch();
     }
+    
+    /**
+     * SELECT * FROM $table WHERE $criteria=$criteriaValue
+     *
+     * @param  mixed $table Table name
+     * @param  mixed $className Class name
+     * @param  mixed $criteria Criteria name
+     * @param  mixed $criteraValue Criteria value
+     * @return User
+     */
+    protected static function readByCriteria($table, $className, $criteria, $criteriaValue)
+    {
+        $dbh = App::get('dbh');
+
+        $statement = $dbh->prepare("SELECT * FROM {$table} WHERE {$criteria}=:criteria_value;");
+        $statement->bindParam(':criteria_value', $criteriaValue);
+        $statement->setFetchMode(PDO::FETCH_CLASS, $className);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 
     /**
      * UPDATE

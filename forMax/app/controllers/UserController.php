@@ -9,7 +9,46 @@ class UserController
 
     public function login()
     {
-        // TODO
+        $install_prefix = App::get('config')['install_prefix'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if(isset($_POST['username']) && isset($_POST['password']))
+            {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                $user = User::fetchUsername($username);
+
+                if(empty($user))
+                {
+                    $_SESSION['error_title'] = "Unknown username";
+                    $_SESSION['error_description'] = "This username doesn't exist.";
+                    Helper::redirect($install_prefix . "/login");
+                }
+
+                if(!password_verify($password, $user->password))
+                {
+                    $_SESSION['error_title'] = "Wrong password";
+                    $_SESSION['error_description'] = "This password doesn't match the username.";
+                    Helper::redirect($install_prefix . "/login");
+                }
+
+                // Login successful
+                $_SESSION[User::$UserSessionId] = $user->id;
+                Helper::redirect($install_prefix . "/topic_show_all");
+            }
+            else
+            {
+                $_SESSION['error_title'] = "Login error";
+                $_SESSION['error_description'] = "Missing information(s)";
+                Helper::redirect($install_prefix . "/login");
+            }
+        }
+        else
+        {
+            Helper::redirect($install_prefix . "/login");
+        }
     }
 
     public function logout()

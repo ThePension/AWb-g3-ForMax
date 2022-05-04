@@ -11,7 +11,7 @@
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                        <h2 class="text-uppercase text-center mb-5">Login</h2>
 
                         <form method="POST" action="/<?= $install_prefix ?>/login_do">
                             <div class="form-outline mb-4">

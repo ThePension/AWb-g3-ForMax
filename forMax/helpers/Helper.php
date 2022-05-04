@@ -43,10 +43,7 @@ class Helper
             return true;
         }
 
-        // TODO : ok if the user is logged
-        //return isset($_SESSION[User::$UserSessionId]);
-
-        return false;
+        return isset($_SESSION[User::$UserSessionId]);
     }
 
     public static function routeAuthorized($uri)
