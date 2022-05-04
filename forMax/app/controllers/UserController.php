@@ -19,7 +19,7 @@ class UserController
 
     public function showRegisterView()
     {
-        // TODO
+        Helper::view("register");
     }
 
     public function register()
