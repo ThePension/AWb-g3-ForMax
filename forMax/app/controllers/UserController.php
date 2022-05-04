@@ -53,7 +53,13 @@ class UserController
 
     public function logout()
     {
-        // TODO
+        if(isset($_SESSION[User::$UserSessionId]))
+        {
+            unset($_SESSION[User::$UserSessionId]);
+        }
+
+        $install_prefix = App::get('config')['install_prefix'];
+        Helper::redirect($install_prefix . "/login");
     }
 
     public function showRegisterView()

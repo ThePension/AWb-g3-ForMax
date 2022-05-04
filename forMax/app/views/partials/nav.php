@@ -11,12 +11,22 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/about">About</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/topic_show_all">Topics</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/account">Account</a>
-        </li>
+
+        <?php
+        if(isset($_SESSION[User::$UserSessionId])) { ?>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/account">Account</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/logout">Logout</a>
+          </li>
+        <?php } ?>
+
       </ul>
       <form method="GET" action="/<?= $install_prefix ?>/topic_show_all" class="d-flex">
         <input class="form-control me-2" name="search" type="search" placeholder="Search" <?php if(isset($_GET['search'])) echo "value=\"". $_GET['search'] ."\""; ?>aria-label="Search">
