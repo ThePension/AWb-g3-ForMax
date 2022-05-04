@@ -61,4 +61,21 @@ class User extends Model
 
         return Model::readById("user", "User", $id);
     }
+
+    /**
+     * save The user in the database
+     *
+     * @return void
+     */
+    public function save()
+    {
+        $user_values = [
+            "username" => $this->username,
+            "password" => $this->password,
+            "description" => $this->description,
+            "timestamp" => $this->timestamp
+        ];
+
+        Model::create("user", $user_values);
+    } 
 }

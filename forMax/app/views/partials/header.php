@@ -48,5 +48,22 @@
                     unset($_SESSION['error_description']);
                 }
             ?>
+
+            <?php
+                // Information message display
+                if(isset($_SESSION['message_title']) && isset($_SESSION['message_description']))
+                {
+                    echo 
+                        "<div class='col-6 card text-white bg-success mb-3'>" .
+                            "<div class='card-body'>" .
+                                "<h5 class='card-title'>" . $_SESSION['message_title'] . "</h5>" .
+                                "<p class='card-text'>" . $_SESSION['message_description'] . " </p>" .
+                            "</div>" .
+                        "</div>";
+
+                    unset($_SESSION['message_title']);
+                    unset($_SESSION['message_description']);
+                }
+            ?>
             
         
