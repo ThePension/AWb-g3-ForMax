@@ -36,7 +36,7 @@ class UserController
 
                 // Login successful
                 $_SESSION[User::$UserSessionId] = $user->id;
-                Helper::redirect($install_prefix . "/topic_show_all");
+                Helper::redirect($install_prefix . "/index");
             }
             else
             {
