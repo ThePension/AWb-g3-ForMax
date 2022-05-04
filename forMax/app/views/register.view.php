@@ -25,12 +25,12 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" id="password" password="password" class="form-control form-control-lg" />
-                                <label class="form-label" for="password">Repeat your password</label>
+                                <input type="password" id="password_repeat" name="password_repeat" class="form-control form-control-lg" />
+                                <label class="form-label" for="password_repeat">Repeat your password</label>
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                <button type="submit" class="btn btn-info btn-block btn-lg text-body text-light">Register</button>
                             </div>
 
                             <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/<?= $install_prefix ?>/login" class="fw-bold text-body"><u>Login here</u></a></p>

@@ -1,4 +1,7 @@
 <?php
+session_start();
+error_reporting(0);
+
 require 'core/database/Connection.php';
 require 'core/Router.php';
 require 'core/Request.php';
