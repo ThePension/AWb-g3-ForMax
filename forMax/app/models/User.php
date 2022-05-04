@@ -7,6 +7,8 @@ class User extends Model
     private $password;
     private $description;
     private $timestamp;
+    
+    static public $UserSessionId = "user_id";
 
     /**
      * __set
@@ -60,6 +62,17 @@ class User extends Model
         //    - $id was validated by the caller
 
         return Model::readById("user", "User", $id);
+    }
+
+    /**
+     * fetchUsername
+     *
+     * @param  mixed $username The username of the user
+     * @return User that is matching the username
+     */
+    public static function fetchUsername($username)
+    {
+        return Model::readByCriteria("user", "User", "username", $username);
     }
 
     /**
