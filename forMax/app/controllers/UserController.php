@@ -58,8 +58,7 @@ class UserController
             unset($_SESSION[User::$UserSessionId]);
         }
 
-        $install_prefix = App::get('config')['install_prefix'];
-        Helper::redirect($install_prefix . "/login");
+        Helper::view("logout");
     }
 
     public function showRegisterView()

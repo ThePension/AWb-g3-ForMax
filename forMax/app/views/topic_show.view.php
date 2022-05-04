@@ -1,5 +1,5 @@
 <?php
-$title = 'Topic';
+$title = 'ForMax - topic';
 $active = 'topic';
 $pageTitle = $topic->getTitleForTopicPage();
 require('partials/header.php');

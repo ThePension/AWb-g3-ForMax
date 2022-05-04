@@ -1,5 +1,6 @@
 <?php
-    $title = "Register";
+    $title = "ForMax - register";
+    $pageTitle = "";
     require('partials/header.php')
 ?>
 
