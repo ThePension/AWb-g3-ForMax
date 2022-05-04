@@ -18,8 +18,23 @@ else
     }
     else
     {
-        $path =  App::get('config')['install_prefix'] . '/login'; // brut force for now
-        Helper::redirect($path);
+        if(Helper::userIsGuest() && Helper::routeGuestAuthorized($uri))
+        {
+            $router->direct($uri);
+        }
+        else
+        {
+            if(Helper::userIsGuest())
+            {
+                $path =  App::get('config')['install_prefix'] . '/index';
+            }
+            else
+            {
+                $path =  App::get('config')['install_prefix'] . '/login';
+            }
+            
+            Helper::redirect($path);
+        }
     }
 }
 

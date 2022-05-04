@@ -155,11 +155,16 @@ class Topic extends Model
                     .
                         htmlentities($this->content)
                     .
-                    "</p>
+                    "</p>";
+        if(isset($_SESSION[User::$UserAccessLevel]) && $_SESSION[User::$UserAccessLevel] == "logged")
+        {
+        $topicHtml .= "
                     <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
                         <a href='/". $editPath ."' class='btn btn-secondary'><i class=\"fa-solid fa-pen\"></i></a>
                         <a href='/". $deletePath ."' class='btn btn-danger'><i class=\"fa-solid fa-trash-can\"></i></a>
-                    </div>
+                    </div>";
+        }
+        $topicHtml .= "
                 </div>
                 <div class='card-footer text-muted container'>
                     <div class='row'>

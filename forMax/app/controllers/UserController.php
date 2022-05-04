@@ -36,6 +36,7 @@ class UserController
 
                 // Login successful
                 $_SESSION[User::$UserSessionId] = $user->id;
+                $_SESSION[User::$UserAccessLevel] = "logged";
                 Helper::redirect($install_prefix . "/index");
             }
             else
@@ -51,11 +52,22 @@ class UserController
         }
     }
 
+    public function guest()
+    {
+        $_SESSION[User::$UserAccessLevel] = "guest";
+        Helper::redirect(App::get('config')['install_prefix'] . "/index");
+    }
+
     public function logout()
     {
         if(isset($_SESSION[User::$UserSessionId]))
         {
             unset($_SESSION[User::$UserSessionId]);
+        }
+
+        if(isset($_SESSION[User::$UserAccessLevel]))
+        {
+            unset($_SESSION[User::$UserAccessLevel]);
         }
 
         Helper::view("logout");

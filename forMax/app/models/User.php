@@ -9,6 +9,7 @@ class User extends Model
     private $timestamp;
     
     static public $UserSessionId = "user_id";
+    static public $UserAccessLevel = "user_access_level";
 
     /**
      * __set
