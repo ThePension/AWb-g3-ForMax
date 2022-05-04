@@ -17,7 +17,7 @@
         </li>
 
         <?php
-        if(isset($_SESSION[User::$UserSessionId])) { ?>
+        if(isset($_SESSION[User::$UserAccessLevel])) { ?>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/<?= $install_prefix ?>/account">Account</a>
           </li>

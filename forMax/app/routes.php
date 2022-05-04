@@ -9,6 +9,7 @@ $router->define([
   'logout' => 'UserController@logout',
   'register' => 'UserController@showRegisterView',
   'register_do' => 'UserController@register',
+  'guest' => 'UserController@guest',
   'topic_add' => 'TopicController@showAddTopicView',
   'topic_add_do' => 'TopicController@addTopic',
   'topic_show' => 'TopicController@showTopicView',

@@ -30,6 +30,8 @@
                             </div>
 
                             <p class="text-center text-muted mt-5 mb-0">Haven't created an account yet ? <a href="/<?= $install_prefix ?>/register" class="fw-bold text-body"><u>Register here</u></a></p>
+
+                            <p class="text-center text-muted mt-5 mb-0">Just want to explore a bit ? <a href="/<?= $install_prefix ?>/guest" class="fw-bold text-body"><u>log in as guest here</u></a></p>
                         </form>
                     </div>
                 </div>

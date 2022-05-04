@@ -46,6 +46,22 @@ class Helper
         return isset($_SESSION[User::$UserSessionId]);
     }
 
+    public static function userIsGuest()
+    {
+        return isset($_SESSION[User::$UserAccessLevel]) && $_SESSION[User::$UserAccessLevel] == "guest";
+    }
+
+    public static function routeGuestAuthorized($uri)
+    {
+        $tempTab = explode("/", $uri);
+        $tempTabLast = explode("?", end($tempTab));
+        $path = $tempTabLast[0];
+        reset($tempTab);
+        reset($tempTabLast);
+
+        return in_array($path, App::get('config')['routes_guest_authorized'], true);
+    }
+
     public static function routeAuthorized($uri)
     {
         if (App::get('config')['debug_mode']) {
