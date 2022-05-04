@@ -101,6 +101,10 @@ class TopicController
                 'topic' => $topic
             ]);
         }
+        else
+        {
+            Helper::redirect(App::get('config')['install_prefix'] . "/topic_show_all");
+        }
     }
     
     /**

@@ -208,6 +208,8 @@ class Topic extends Model
 
         Model::update("topic", $this->id, $params);
 
+        $install_prefix = App::get('config')['install_prefix'];
+        Helper::redirect($install_prefix . "/topic_show?id=" . $this->id);
     }
     
     /**
