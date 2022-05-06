@@ -6,7 +6,7 @@ deploy_prod:
     tags:
         - appweb
     script:
-        - cd /var/www/php/AWb-g3-ForMax/main
+        - cd /var/www/php/awb-g3-formax/main
         - git checkout main
         - git pull origin main
     only:
