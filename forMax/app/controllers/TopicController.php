@@ -160,11 +160,13 @@ class TopicController
 
                 $topic_name = $_POST['topic_name'] ?? "";
                 $topic_content = $_POST['topic_content'] ?? "";
+                $topic_status = $_POST['topic_status'] ?? "";
         
-                if($topic_name != "" && $topic_content != "")
+                if($topic_name != "" && $topic_content != "" && $topic_status != "")
                 {
                     $topic->name = $topic_name;
                     $topic->content = $topic_content;
+                    $topic->status = $topic_status;
                     
                     try
                     {
