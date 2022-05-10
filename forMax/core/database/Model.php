@@ -1,5 +1,9 @@
 <?php
 
+/* globalement, code simplifiable (KISS) et aussi pourquoi deux methodes differentes
+ * typiquement on fait un peu la meme chose dans create et update (DRY)
+ */
+
 /**
  * Abstract class forcing extending class (AppQueryBuilder) to inherit this class
  */
@@ -10,30 +14,20 @@ abstract class Model
      * @param String $table Table name
      * @param Array $params Arrays of parameters
      */
+    /* exemple de simplification vu que positionnel */
     protected static function create($table, $params)
     {
         $dbh = App::get('dbh');
 
-        $callback = function(string $_): string
-        {
-            return "?";
-        };
-
-        $copyParam = array_map($callback, $params);
+        $copyParam = array_map(function ($x) { return "?"; }, $params);
 
         $binding = implode(", ", $copyParam);
         $keys = implode(", ", array_keys($params));
-        $values = array_values($params);
 
         $req = "INSERT INTO {$table} ({$keys}) VALUES ({$binding});";
         $statement = $dbh->prepare($req);
 
-        for ($k = 1; $k <= count($values); $k++)
-        {
-            $statement->bindParam($k, $values[$k - 1]);
-        }
-
-        $statement->execute();
+        $statement->execute(array_values($params));
     }
 
     /**

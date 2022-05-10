@@ -43,6 +43,7 @@ class TopicController
             throw new Exception("Topic creation : incorrect argument(s)");
         }
 
+        /* evt. le helper pourrait s'occuper de $install_prefix ci dessous */
         Helper::redirect($install_prefix . "/topic_show_all");
     }
     
