@@ -9,6 +9,7 @@ class Topic extends Model
     private $update_timestamp;
     private $creation_timestamp;
     private $fk_user;
+    private $status; // PRIVATE, PUBLIC, HIDDEN
  
     /**
      * __set
@@ -79,7 +80,8 @@ class Topic extends Model
             "rank" => $this->rank,
             "update_timestamp" => $this->update_timestamp,
             "creation_timestamp" => $this->creation_timestamp,
-            "fk_user" => $user_id
+            "fk_user" => $user_id,
+            "status" => $this->status,
         ];
 
         Model::create("topic", $topic_values);
@@ -101,7 +103,7 @@ class Topic extends Model
                 <div class='card-header'>
                 Author : "
                 .
-                    htmlentities($this->whoWroteTopic())
+                    htmlentities($this->whoWroteTopic()) . " (" . htmlentities($this->status) . ")"
                 .
                 "</div>
                 <div class='card-body'>

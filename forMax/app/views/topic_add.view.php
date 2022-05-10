@@ -13,6 +13,14 @@ require('partials/header.php');
                 <input type="text" class="form-control" id="topic_name" name="topic_name" required>
             </div>
             <div class="col-12 mb-3">
+                <label for="topic_status" class="form-label">Status</label>
+                <select class="form-select" id="topic_status" name="topic_status">
+                    <option selected value="PUBLIC">Public (Everyone can access your topic)</option>
+                    <option value="PRIVATE">Private (Only people owning the topic's private key can access your topic)</option>
+                    <option value="HIDDEN">Hidden (Only you can access your topic)</option>
+                </select>
+            </div>
+            <div class="col-12 mb-3">
                 <label for="topic_content" class="form-label">Content</label>
                 <textarea rows="5" class="form-control" name="topic_content" id="topic_content" required></textarea>
             </div>
