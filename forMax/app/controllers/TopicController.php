@@ -90,16 +90,34 @@ class TopicController
      */
     public function deleteTopic()
     {
+        $install_prefix = App::get('config')['install_prefix'];
+
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];
 
             $topic = Topic::fetchId($id);
 
+            try
+            {
+                $topic->remove();
+
+                $_SESSION['message_title'] = "Deletion successful";
+                $_SESSION['message_description'] = "The topic has been deleted.";
+
+                Helper::redirect($install_prefix . "/topic_show_all");
+            }
+            catch (Exception $e)
+            {
+                $_SESSION['error_title'] = "Deletion topic error";
+                $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
+                Helper::redirect($install_prefix . "/topic_show_all");
+            }
+            
             $topic->remove();
         }
         
-        Helper::redirect(App::get('config')['install_prefix'] . "/topic_show_all");
+        Helper::redirect($install_prefix . "/topic_show_all");
     }
     
     /**
@@ -132,6 +150,8 @@ class TopicController
      */
     public function updateTopic()
     {
+        $install_prefix = App::get('config')['install_prefix'];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if(isset($_POST['id']))
@@ -145,17 +165,31 @@ class TopicController
                 {
                     $topic->name = $topic_name;
                     $topic->content = $topic_content;
+                    
+                    try
+                    {
+                        $topic->modify();
         
-                    $topic->modify();
+                        $_SESSION['message_title'] = "Modification successful";
+                        $_SESSION['message_description'] = "The topic has been modified.";
+        
+                        Helper::redirect($install_prefix . "/topic_show_all");
+                    }
+                    catch (Exception $e)
+                    {
+                        $_SESSION['error_title'] = "Modification topic error";
+                        $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
+                        Helper::redirect($install_prefix . "/topic_show_all");
+                    }
                 }
                 else
                 {
-                    throw new Exception("Topic modification : incorrect argument(s)");
+                    $_SESSION['error_title'] = "Topic modification error";
+                    $_SESSION['error_description'] = "Invalid argument(s)";
+                    Helper::redirect($install_prefix . "/topic_show_all");
                 }
             }
         }
-
-        $install_prefix = App::get('config')['install_prefix'];
         Helper::redirect($install_prefix . "/topic_show_all");
     }
     
