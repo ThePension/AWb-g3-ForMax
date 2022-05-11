@@ -210,6 +210,10 @@ class TopicController
     {
         $topics = Topic::fetchAll();
 
+        $public_topics = array_filter($topics, function($topic) use (&$search) {
+            return $topic->status == "PUBLIC";
+        });
+
         // SEARCH PARAMETER
         if(isset($_GET['search']))
         {
@@ -217,14 +221,14 @@ class TopicController
 
             if($search != "")
             {
-                $topics = array_filter($topics, function($topic) use (&$search) {
-                    return (strstr($topic->name, $search) || strstr($topic->content, $search)) !== false;
-                 });
+                $public_topics = array_filter($public_topics, function($topic) use (&$search) {
+                    return (strstr($topic->name, $search) || strstr($topic->content, $search)) !== false && $topic->status == "PUBLIC";
+                });
             }
         }
 
         return Helper::view("topic_show_all",[
-            'topics' => $topics
+            'topics' => $public_topics
         ]);
     }
     
