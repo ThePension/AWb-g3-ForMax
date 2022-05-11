@@ -20,6 +20,17 @@ class TopicController
      */
     public function addTopic()
     {
+        $install_prefix = App::get('config')['install_prefix'];
+
+        $owner_id = $_SESSION[User::$UserSessionId] ?? null;
+
+        if($owner_id == null)
+        {
+            $_SESSION['error_title'] = "Can not create a topic";
+            $_SESSION['error_description'] = "You must be logged in to create a topic";
+            Helper::redirect($install_prefix . "/login");
+        }
+
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
         $topic_content = $_POST['topic_content'] ?? "";
         $topic_status = $_POST['topic_status'] ?? "";
@@ -32,6 +43,7 @@ class TopicController
             $topic->creation_timestamp = date("Y-m-d H:i:s");
             $topic->update_timestamp = date("Y-m-d H:i:s");
             $topic->status = $topic_status;
+            $topic->fk_user = $owner_id;
 
             // TODO
             $topic->rank = 0;

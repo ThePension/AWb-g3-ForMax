@@ -72,15 +72,13 @@ class Topic extends Model
      */
     public function save()
     {
-        $user_id = 1; // TO DO LATER
-
         $topic_values = [
             "name" => $this->name,
             "content" => $this->content,
             "rank" => $this->rank,
             "update_timestamp" => $this->update_timestamp,
             "creation_timestamp" => $this->creation_timestamp,
-            "fk_user" => $user_id,
+            "fk_user" => $this->fk_user,
             "status" => $this->status,
         ];
 
@@ -154,7 +152,7 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>";
-        if(isset($_SESSION[User::$UserAccessLevel]) && $_SESSION[User::$UserAccessLevel] == "logged")
+        if(isset($_SESSION[User::$UserSessionId]) && $_SESSION[User::$UserSessionId] == $this->fk_user)
         {
         $topicHtml .= "
                     <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
