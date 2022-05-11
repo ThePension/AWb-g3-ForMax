@@ -241,4 +241,33 @@ class TopicController
     {
         // TODO
     }
+
+    /**
+     * showMyTopics
+     *
+     * @return void
+     */
+    public function showMyTopics()
+    {
+        $install_prefix = App::get('config')['install_prefix'];
+
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+        if($user_id == null)
+        {
+            $_SESSION['error_title'] = "Can not access your topics";
+            $_SESSION['error_description'] = "You must be logged in to access your topics";
+            Helper::redirect($install_prefix . "/login");
+        }
+
+        $topics = Topic::fetchAll();
+
+        $topics = array_filter($topics, function($topic) use (&$user_id) {
+            return $topic->fk_user == $user_id;
+        });
+
+        return Helper::view("topic_show_all",[
+            'topics' => $topics
+        ]);
+    }
 }
