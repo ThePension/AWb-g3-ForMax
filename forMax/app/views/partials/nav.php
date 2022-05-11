@@ -17,9 +17,13 @@
         </li>
 
         <?php
-        if(isset($_SESSION[User::$UserAccessLevel])) { ?>
+        if(isset($_SESSION[User::$UserSessionId])) { ?>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/<?= Helper::createUrl("account") ?>">Account</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/<?= Helper::createUrl("my_topics") ?>">My topics</a>
           </li>
 
           <li class="nav-item">
