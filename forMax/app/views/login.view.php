@@ -14,7 +14,7 @@
                     <div class="card-body p-5">
                         <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-                        <form method="POST" action="/<?= $install_prefix ?>/login_do">
+                        <form method="POST" action="/<?= Helper::createUrl("login_do") ?>">
                             <div class="form-outline mb-4">
                                 <input type="text" id="username" name="username" class="form-control form-control-lg" />
                                 <label class="form-label" for="username">Username</label>
@@ -29,9 +29,9 @@
                                 <button type="submit" class="btn btn-info btn-block btn-lg text-body text-light">Login</button>
                             </div>
 
-                            <p class="text-center text-muted mt-5 mb-0">Haven't created an account yet ? <a href="/<?= $install_prefix ?>/register" class="fw-bold text-body"><u>Register here</u></a></p>
+                            <p class="text-center text-muted mt-5 mb-0">Haven't created an account yet ? <a href="/<?= Helper::createUrl("register") ?>" class="fw-bold text-body"><u>Register here</u></a></p>
 
-                            <p class="text-center text-muted mt-5 mb-0">Just want to explore a bit ? <a href="/<?= $install_prefix ?>/guest" class="fw-bold text-body"><u>log in as guest here</u></a></p>
+                            <p class="text-center text-muted mt-5 mb-0">Just want to explore a bit ? <a href="/<?= Helper::createUrl("guest") ?>" class="fw-bold text-body"><u>log in as guest here</u></a></p>
                         </form>
                     </div>
                 </div>

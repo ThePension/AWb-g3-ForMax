@@ -20,8 +20,6 @@ class TopicController
      */
     public function addTopic()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
         $topic_content = $_POST['topic_content'] ?? "";
         $topic_status = $_POST['topic_status'] ?? "";
@@ -45,23 +43,23 @@ class TopicController
                 $_SESSION['message_title'] = "Addition successful";
                 $_SESSION['message_description'] = "The topic has been created.";
 
-                Helper::redirect($install_prefix . "/topic_show_all");
+                Helper::redirect(Helper::createUrl("topic_show_all"));
             }
             catch (Exception $e)
             {
                 $_SESSION['error_title'] = "Adding topic error";
                 $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
-                Helper::redirect($install_prefix . "/topic_add");
+                Helper::redirect(Helper::createUrl("topic_add"));
             }
         }
         else
         {
             $_SESSION['error_title'] = "Adding topic error";
             $_SESSION['error_description'] = "Missing information(s)";
-            Helper::redirect($install_prefix . "/topic_add");
+            Helper::redirect(Helper::createUrl("topic_add"));
         }
 
-        Helper::redirect($install_prefix . "/topic_show_all");
+        Helper::redirect(Helper::createUrl("topic_show_all"));
     }
     
     /**
@@ -90,8 +88,6 @@ class TopicController
      */
     public function deleteTopic()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];
@@ -105,19 +101,19 @@ class TopicController
                 $_SESSION['message_title'] = "Deletion successful";
                 $_SESSION['message_description'] = "The topic has been deleted.";
 
-                Helper::redirect($install_prefix . "/topic_show_all");
+                Helper::redirect(Helper::createUrl("topic_show_all"));
             }
             catch (Exception $e)
             {
                 $_SESSION['error_title'] = "Deletion topic error";
                 $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
-                Helper::redirect($install_prefix . "/topic_show_all");
+                Helper::redirect(Helper::createUrl("topic_show_all"));
             }
             
             $topic->remove();
         }
         
-        Helper::redirect($install_prefix . "/topic_show_all");
+        Helper::redirect(Helper::createUrl("topic_show_all"));
     }
     
     /**
@@ -139,7 +135,7 @@ class TopicController
         }
         else
         {
-            Helper::redirect(App::get('config')['install_prefix'] . "/topic_show_all");
+            Helper::redirect(Helper::createUrl("topic_show_all"));
         }
     }
     
@@ -150,8 +146,6 @@ class TopicController
      */
     public function updateTopic()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if(isset($_POST['id']))
@@ -175,24 +169,24 @@ class TopicController
                         $_SESSION['message_title'] = "Modification successful";
                         $_SESSION['message_description'] = "The topic has been modified.";
         
-                        Helper::redirect($install_prefix . "/topic_show_all");
+                        Helper::redirect(Helper::createUrl("topic_show_all"));
                     }
                     catch (Exception $e)
                     {
                         $_SESSION['error_title'] = "Modification topic error";
                         $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
-                        Helper::redirect($install_prefix . "/topic_show_all");
+                        Helper::redirect(Helper::createUrl("topic_show_all"));
                     }
                 }
                 else
                 {
                     $_SESSION['error_title'] = "Topic modification error";
                     $_SESSION['error_description'] = "Invalid argument(s)";
-                    Helper::redirect($install_prefix . "/topic_show_all");
+                    Helper::redirect(Helper::createUrl("topic_show_all"));
                 }
             }
         }
-        Helper::redirect($install_prefix . "/topic_show_all");
+        Helper::redirect(Helper::createUrl("topic_show_all"));
     }
     
     /**

@@ -9,7 +9,7 @@ require('partials/header.php');
 	<div class="container">
 		<?= $topic->getAsBootstrapGridForTopicPage(); ?>
 		<br>
-		<a href="/<?= $install_prefix ?>/topic_show_all" class='btn btn-info text-light'>Show all topics</a>
+		<a href="/<?= Helper::createUrl("topic_show_all") ?>" class='btn btn-info text-light'>Show all topics</a>
 	</div>
 </main>
 

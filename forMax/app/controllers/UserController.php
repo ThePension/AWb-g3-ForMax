@@ -9,8 +9,6 @@ class UserController
 
     public function login()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if(isset($_POST['username']) && isset($_POST['password']))
@@ -24,38 +22,38 @@ class UserController
                 {
                     $_SESSION['error_title'] = "Unknown username";
                     $_SESSION['error_description'] = "This username doesn't exist.";
-                    Helper::redirect($install_prefix . "/login");
+                    Helper::redirect(Helper::createUrl("login"));
                 }
 
                 if(!password_verify($password, $user->password))
                 {
                     $_SESSION['error_title'] = "Wrong password";
                     $_SESSION['error_description'] = "This password doesn't match the username.";
-                    Helper::redirect($install_prefix . "/login");
+                    Helper::redirect(Helper::createUrl("login"));
                 }
 
                 // Login successful
                 $_SESSION[User::$UserSessionId] = $user->id;
                 $_SESSION[User::$UserAccessLevel] = "logged";
-                Helper::redirect($install_prefix . "/index");
+                Helper::redirect(Helper::createUrl("index"));
             }
             else
             {
                 $_SESSION['error_title'] = "Login error";
                 $_SESSION['error_description'] = "Missing information(s)";
-                Helper::redirect($install_prefix . "/login");
+                Helper::redirect(Helper::createUrl("login"));
             }
         }
         else
         {
-            Helper::redirect($install_prefix . "/login");
+            Helper::redirect(Helper::createUrl("login"));
         }
     }
 
     public function guest()
     {
         $_SESSION[User::$UserAccessLevel] = "guest";
-        Helper::redirect(App::get('config')['install_prefix'] . "/index");
+        Helper::redirect(Helper::createUrl("index"));
     }
 
     public function logout()
@@ -80,8 +78,6 @@ class UserController
 
     public function register()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password_repeat']))
@@ -90,7 +86,7 @@ class UserController
                 {
                     $_SESSION['error_title'] = "Password error";
                     $_SESSION['error_description'] = "Passwords don't match";
-                    Helper::redirect($install_prefix . "/register");
+                    Helper::redirect(Helper::createUrl("register"));
                 }
 
                 $user = new User();
@@ -108,7 +104,7 @@ class UserController
                     $_SESSION['message_title'] = "Registration succeeded";
                     $_SESSION['message_description'] = "Your account has been created, please connect.";
 
-                    Helper::redirect($install_prefix . "/login");
+                    Helper::redirect(Helper::createUrl("login"));
                 }
                 catch (Exception $e)
                 {
@@ -116,12 +112,12 @@ class UserController
                     {
                         $_SESSION['error_title'] = "Duplicate username";
                         $_SESSION['error_description'] = "This username already exists, please choose another one.";
-                        Helper::redirect($install_prefix . "/register");
+                        Helper::redirect(Helper::createUrl("register"));
                     }
 
                     $_SESSION['error_title'] = "Unknown error";
                     $_SESSION['error_description'] = $e->getMessage();
-                    Helper::redirect($install_prefix . "/register");
+                    Helper::redirect(Helper::createUrl("register"));
                     
                 }
             }
@@ -129,12 +125,12 @@ class UserController
             {
                 $_SESSION['error_title'] = "Register error";
                 $_SESSION['error_description'] = "Missing information(s)";
-                Helper::redirect($install_prefix . "/register");
+                Helper::redirect(Helper::createUrl("register"));
             }
         }
         else
         {
-            Helper::redirect($install_prefix . "/register");
+            Helper::redirect(Helper::createUrl("register"));
         }
     }
 

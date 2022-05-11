@@ -5,9 +5,7 @@
 ?>
 
 <?php
-$install_prefix = App::get('config')['install_prefix'];
-
-$pathToLogin = "/" . $install_prefix . "/login";
+$pathToLogin = "/" . Helper::createUrl("login");
 ?>
 
 <div class="cover-container d-flex w-100 h-100 p-3 text-center mx-auto flex-column">

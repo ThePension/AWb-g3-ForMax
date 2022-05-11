@@ -94,9 +94,7 @@ class Topic extends Model
      */
     public function getAsBootstrapGridForHomePage()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
-        $pathToTheTopic = "/" . $install_prefix . "/topic_show?id=" . htmlentities($this->id);
+        $pathToTheTopic = "/" . Helper::createUrl("topic_show") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
             "<div class='col-sm m-1 card mt-3'>
@@ -145,10 +143,8 @@ class Topic extends Model
      */
     public function getAsBootstrapGridForTopicPage()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
-        $deletePath = $install_prefix . "/topic_delete?id=" . htmlentities($this->id);
-        $editPath = $install_prefix . "/topic_update?id=" . htmlentities($this->id);
+        $deletePath = Helper::createUrl("topic_delete") . "?id=" . htmlentities($this->id);
+        $editPath = Helper::createUrl("topic_update") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
             "<div class='col-sm m-1 card mt-3'>
@@ -215,9 +211,7 @@ class Topic extends Model
         ];
 
         Model::update("topic", $this->id, $params);
-
-        $install_prefix = App::get('config')['install_prefix'];
-        Helper::redirect($install_prefix . "/topic_show?id=" . $this->id);
+        Helper::redirect(Helper::createUrl("topic_show") . "?id=" . $this->id);
     }
     
     /**

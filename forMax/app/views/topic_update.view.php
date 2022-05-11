@@ -7,7 +7,7 @@ require('partials/header.php');
 
 <main>
 	<div class="container">
-        <form class="row" method="POST" action="/<?=$install_prefix?>/topic_update_do">
+        <form class="row" method="POST" action="/<?= Helper::createUrl("topic_update_do") ?>">
             <input type="hidden" name="id" value="<?= htmlentities($topic->id) ?>"/>
             <div class="col-12 mb-3">
                 <label for="topic_name" class="form-label">Name</label>
@@ -29,10 +29,9 @@ require('partials/header.php');
             </div>
             
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="/<?=$install_prefix?>/topic_show?id=<?=  htmlentities($topic->id) ?>"><button class="btn btn-secondary me-md-2" type="button">Abort</button></a>
+                <a href="/<?= Helper::createUrl("topic_show") ?>?id=<?= htmlentities($topic->id) ?>"><button class="btn btn-secondary me-md-2" type="button">Abort</button></a>
                 <button class="btn btn-success" type="submit">Save changes</button>
             </div>
-            
         </form>
 	</div>
 </main>
