@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/<?= $install_prefix ?>/">Home</a>
+    <a class="navbar-brand" href="/<?= Helper::createUrl("index") ?>">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,8 +28,8 @@
         <?php } ?>
 
       </ul>
-      <form method="GET" action="/<?= $install_prefix ?>/topic_show_all" class="d-flex">
-        <input class="form-control me-2" name="search" type="search" placeholder="Search" <?php if(isset($_GET['search'])) echo "value=\"". $_GET['search'] ."\""; ?>aria-label="Search">
+      <form method="get" action="/<?= Helper::createUrl("topic_show_all") ?>" class="d-flex">
+        <input class="form-control me-2" name="search" type="search" placeholder="Search" <?php if(isset($_GET['search'])) echo "value=\"". htmlentities($_GET['search']) ."\""; ?>aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </div>
