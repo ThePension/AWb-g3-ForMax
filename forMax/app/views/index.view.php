@@ -5,10 +5,8 @@
 ?>
 
 <?php
-$install_prefix = App::get('config')['install_prefix'];
-
-$pathToTopics = "/" . $install_prefix . "/topic_show_all";
-$pathToWriteTopic = "/" . $install_prefix . "/topic_add";
+$pathToTopics = "/" . Helper::createUrl("topic_show_all");
+$pathToWriteTopic = "/" . Helper::createUrl("topic_add");
 ?>
 
 <div class="cover-container d-flex w-100 h-100 p-3 text-center mx-auto flex-column">

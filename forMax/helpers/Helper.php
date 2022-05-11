@@ -5,6 +5,8 @@
  */
 class Helper
 {
+    public static $install_prefix;
+
     public static function display($data)
     {
         echo '<pre>';
@@ -30,11 +32,20 @@ class Helper
         return require "app/views/{$name}.view.php";
     }
 
-
     public static function redirect($path)
     {
         header("Location: /{$path}");
         exit();
+    }
+
+    public static function createUrl($route)
+    {
+        if(!isset(Helper::$install_prefix))
+        {
+            Helper::$install_prefix = App::get('config')['install_prefix'];
+        }
+
+        return Helper::$install_prefix . "/" . $route;
     }
 
     public static function userAuthenticated()

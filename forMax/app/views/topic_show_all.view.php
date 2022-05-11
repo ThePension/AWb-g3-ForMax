@@ -11,7 +11,7 @@ require('partials/header.php');
 		if(isset($_SESSION[User::$UserAccessLevel]) && $_SESSION[User::$UserAccessLevel] == "logged")
 		{
 		?>
-		<a href='/<?= $install_prefix?>/topic_add' class='btn btn-success text-light'>Create new topic</a>
+		<a href='/<?= Helper::createUrl("topic_add") ?>' class='btn btn-success text-light'>Create new topic</a>
 		<?php
 		}
 		?>
