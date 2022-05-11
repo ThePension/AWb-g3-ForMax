@@ -20,15 +20,13 @@ class TopicController
      */
     public function addTopic()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         $owner_id = $_SESSION[User::$UserSessionId] ?? null;
 
         if($owner_id == null)
         {
             $_SESSION['error_title'] = "Can not create a topic";
             $_SESSION['error_description'] = "You must be logged in to create a topic";
-            Helper::redirect($install_prefix . "/login");
+            Helper::redirect(Helper::createUrl("login"));
         }
 
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
@@ -100,11 +98,28 @@ class TopicController
      */
     public function deleteTopic()
     {
+
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+        if($user_id == null)
+        {
+            $_SESSION['error_title'] = "Can not create a topic";
+            $_SESSION['error_description'] = "You must be logged in to create a topic";
+            Helper::redirect(Helper::createUrl("login"));
+        }
+
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];
 
             $topic = Topic::fetchId($id);
+
+            if($topic->fk_user != $user_id)
+            {
+                $_SESSION['error_title'] = "Can not delete this topic";
+                $_SESSION['error_description'] = "Only the owner can delete this topic";
+                Helper::redirect(Helper::createUrl("topic_show_all"));
+            }
 
             try
             {
@@ -135,11 +150,27 @@ class TopicController
      */
     public function showUpdateTopicView()
     {
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+        if($user_id == null)
+        {
+            $_SESSION['error_title'] = "Can not create a topic";
+            $_SESSION['error_description'] = "You must be logged in to create a topic";
+            Helper::redirect(Helper::createUrl("login"));
+        }
+
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];
 
             $topic = Topic::fetchId($id);
+
+            if($topic->fk_user != $user_id)
+            {
+                $_SESSION['error_title'] = "Can not update this topic";
+                $_SESSION['error_description'] = "Only the owner can update this topic";
+                Helper::redirect(Helper::createUrl("topic_show_all"));
+            }
 
             return Helper::view("topic_update",[
                 'topic' => $topic
@@ -249,15 +280,13 @@ class TopicController
      */
     public function showMyTopics()
     {
-        $install_prefix = App::get('config')['install_prefix'];
-
         $user_id = $_SESSION[User::$UserSessionId] ?? null;
 
         if($user_id == null)
         {
             $_SESSION['error_title'] = "Can not access your topics";
             $_SESSION['error_description'] = "You must be logged in to access your topics";
-            Helper::redirect($install_prefix . "/login");
+            Helper::redirect(Helper::createUrl("login"));
         }
 
         $topics = Topic::fetchAll();
