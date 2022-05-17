@@ -25,7 +25,10 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/<?= Helper::createUrl("my_topics") ?>">My topics</a>
           </li>
+          <?php } ?>
 
+          <?php
+          if(isset($_SESSION[User::$UserAccessLevel])) { ?>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/<?= Helper::createUrl("logout") ?>">Logout</a>
           </li>
