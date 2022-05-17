@@ -107,25 +107,16 @@ abstract class Model
     {
         $dbh = App::get('dbh');
 
-        $callback = function(string $k): string
-        {
-            return "{$k}=:{$k}";
-        };
-
         $keys = array_keys($params);
-        $values = array_values($params);
-        $tab_set = array_map($callback, $keys);
+        $tab_set = array_map(function ($k) { return "{$k}=:{$k}"; }, $keys);
 
         $set_string = implode(", ", $tab_set);
 
-        $req = "UPDATE {$table} SET {$set_string} WHERE id=:model_id;";
+        $req = "UPDATE {$table} SET {$set_string} WHERE id=:id;";
         $statement = $dbh->prepare($req);
-        
-        for ($n = 0; $n < count($values); $n++)
-        {
-            $statement->bindParam(":{$keys[$n]}", $values[$n]);
-        }
-        $statement->bindParam(':model_id', $id);
+
+        $params["id"] = $id;
+        array_map(function ($key, $value) use($statement) { $statement->bindParam(":{$key}", $value); }, array_keys($params), array_values($params));
 
         $statement->execute();
     }
