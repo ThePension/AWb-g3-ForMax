@@ -35,9 +35,9 @@ Il y aura aussi deux types d'utilisateurs, des utilisateurs authentifiés classi
 |---|---|---|
 | 1 | Visualiser les différents sujets (données simulées) | OK |
 | 2 | Modération des sujets par leur créateur (CRUD sur des données réelles) | OK |
-| 3 | Gestion des comptes (login) |  |
-| 4 | Mode visiteur |  |
-| 5 | Mise en place des sujets privés avec clé d'accès |  |
+| 3 | Gestion des comptes (login) | OK |
+| 4 | Mode visiteur | OK |
+| 5 | Mise en place des sujets privés avec clé d'accès | OK |
 | 6 | Espace commentaire + Like, Dislike |  |
 | 7 | Possibilité de personnaliser son compte |  |
 | 8 | Notifications asynchrones |  |
