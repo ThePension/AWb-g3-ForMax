@@ -333,18 +333,18 @@ class TopicController
 
         $topics = Topic::fetchAll();
 
-        $topic = array_filter($topics, function($topic) use (&$private_topic_key) {
-            return $topic->private_key == $private_topic_key;
+        $private_topic = array_filter($topics, function($topic) use (&$private_topic_key) {
+            return password_verify($private_topic_key, $topic->private_key);
         });
 
-        if($topic == null)
+        if($private_topic == null)
         {
             $_SESSION['error_title'] = "Can not subscribe";
             $_SESSION['error_description'] = "You must enter a valid private topic key";
             Helper::redirect(Helper::createUrl("topic_subscribe"));
         }
 
-        $path_to_topic = Helper::createUrl("topic_show") . "?id=" . htmlentities($topic->id);
+        $path_to_topic = Helper::createUrl("topic_show") . "?id=" . htmlentities(array_values($private_topic)[0]->id);
         Helper::redirect($path_to_topic);
     }
 }
