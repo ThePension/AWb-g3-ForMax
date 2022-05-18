@@ -16,11 +16,21 @@ require('partials/header.php');
 
             <div class="col-12 mb-3">
                 <label for="topic_status" class="form-label">Status</label>
-                <select class="form-select" id="topic_status" name="topic_status">
+                <select class="form-select" id="topic_status" name="topic_status" onchange="topic_status_changed(this.value)">
                     <option <?= $topic->status == "PUBLIC" ? "selected" : "" ?> value="PUBLIC">Public (Everyone can access your topic)</option>
                     <option <?= $topic->status == "PRIVATE" ? "selected" : "" ?> value="PRIVATE">Private (Only people owning the topic's private key can access your topic)</option>
                     <option <?= $topic->status == "HIDDEN" ? "selected" : "" ?> value="HIDDEN">Hidden (Only you can access your topic)</option>
                 </select>
+            </div>
+
+
+            <div id="private_key_button_box" class="col-12 mb-3 <?= $topic->status != "PRIVATE" ? "d-none" : "" ?>">
+                <button class="btn btn-success" type="button" onclick="topic_modify_private_key()">Update private key</button>
+            </div>
+
+            <div id="private_key_box" class="col-12 mb-3 d-none">
+                <label for="topic_private_key" class="form-label">Private key</label>
+                <input type="text" class="form-control" id="topic_private_key" name="topic_private_key">
             </div>
 
             <div class="col-12 mb-3">
@@ -35,5 +45,36 @@ require('partials/header.php');
         </form>
 	</div>
 </main>
+
+<script>
+    function topic_status_changed(val)
+    {
+        let base_status = '<?php echo $topic->status; ?>';
+
+        // Toggle private key input
+        if(base_status == "PRIVATE" && val == "PRIVATE")
+        {
+            document.getElementById("private_key_button_box").classList.remove("d-none");
+        }
+        else
+        {
+            if(val == "PRIVATE")
+            {
+                document.getElementById("private_key_box").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("private_key_button_box").classList.add("d-none");
+                document.getElementById("private_key_box").classList.add("d-none");
+            }
+        }
+    }
+
+    function topic_modify_private_key(val)
+    {
+        // Toggle private key input
+        document.getElementById("private_key_box").classList.remove("d-none");
+    }
+</script>
 
 <?php require('partials/footer.php'); ?>

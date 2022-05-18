@@ -23,7 +23,7 @@ require('partials/header.php');
 
             <div id="private_key_box" class="col-12 mb-3 d-none">
                 <label for="topic_private_key" class="form-label">Private key</label>
-                <input type="text" class="form-control" id="topic_private_key" name="topic_private_key" required>
+                <input type="text" class="form-control" id="topic_private_key" name="topic_private_key">
             </div>
 
             <div class="col-12 mb-3">
