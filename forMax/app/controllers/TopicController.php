@@ -205,12 +205,25 @@ class TopicController
                 $topic_name = $_POST['topic_name'] ?? "";
                 $topic_content = $_POST['topic_content'] ?? "";
                 $topic_status = $_POST['topic_status'] ?? "";
+                $topic_private_key = $_POST['topic_private_key'] ?? "";
+
+                if($topic_private_key != "")
+                {
+                    // If the private key has been updated, hash it
+                    $topic_private_key = password_hash($topic_private_key, PASSWORD_DEFAULT);
+                    $topic->private_key = $topic_private_key;
+                }
         
                 if($topic_name != "" && $topic_content != "" && $topic_status != "")
                 {
                     $topic->name = $topic_name;
                     $topic->content = $topic_content;
                     $topic->status = $topic_status;
+
+                    if($topic->status != "PRIVATE")
+                    {
+                        $topic->private_key = null;
+                    }
                     
                     try
                     {
