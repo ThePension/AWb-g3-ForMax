@@ -17,6 +17,8 @@ $router->define([
   'topic_update' => 'TopicController@showUpdateTopicView',
   'topic_update_do' => 'TopicController@updateTopic',
   'topic_show_all' => 'TopicController@showAllTopics',
+  'topic_subscribe' => 'TopicController@showSubscribe',
+  'topic_subscribe_do' => 'TopicController@subscribe',
   'comment_add' => 'CommentController@addComment',
   'comment_update' => 'CommentController@updateComment',
   'comment_delete' => 'CommentController@removeComment',

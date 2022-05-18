@@ -306,4 +306,45 @@ class TopicController
             'topics' => $topics
         ]);
     }
+
+    public function showSubscribe()
+    {
+        return Helper::view("topic_subscribe");
+    }
+
+    public function subscribe()
+    {
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
+        $private_topic_key = $_POST['private_topic_key'] ?? null;
+
+        if($user_id == null)
+        {
+            $_SESSION['error_title'] = "Can not subscribe to private topic";
+            $_SESSION['error_description'] = "You must be logged in to access this feature";
+            Helper::redirect(Helper::createUrl("login"));
+        }
+
+        if($private_topic_key == null)
+        {
+            $_SESSION['error_title'] = "Can not subscribe";
+            $_SESSION['error_description'] = "You must enter a private topic key";
+            Helper::redirect(Helper::createUrl("topic_subscribe"));
+        }
+
+        $topics = Topic::fetchAll();
+
+        $topic = array_filter($topics, function($topic) use (&$private_topic_key) {
+            return $topic->private_key == $private_topic_key;
+        });
+
+        if($topic == null)
+        {
+            $_SESSION['error_title'] = "Can not subscribe";
+            $_SESSION['error_description'] = "You must enter a valid private topic key";
+            Helper::redirect(Helper::createUrl("topic_subscribe"));
+        }
+
+        $path_to_topic = Helper::createUrl("topic_show") . "?id=" . htmlentities($topic->id);
+        Helper::redirect($path_to_topic);
+    }
 }
