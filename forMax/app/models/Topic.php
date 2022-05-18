@@ -10,6 +10,7 @@ class Topic extends Model
     private $creation_timestamp;
     private $fk_user;
     private $status; // PRIVATE, PUBLIC, HIDDEN
+    private $private_key;
  
     /**
      * __set
@@ -80,6 +81,7 @@ class Topic extends Model
             "creation_timestamp" => $this->creation_timestamp,
             "fk_user" => $this->fk_user,
             "status" => $this->status,
+            "private_key" => $this->private_key,
         ];
 
         Model::create("topic", $topic_values);
@@ -205,7 +207,8 @@ class Topic extends Model
             'content' => $this->content,
             'creation_timestamp' => $this->creation_timestamp,
             'update_timestamp' => date("Y-m-d H:i:s"),
-            'status' => $this->status
+            'status' => $this->status,
+            "private_key" => $this->private_key,
         ];
 
         Model::update("topic", $this->id, $params);
