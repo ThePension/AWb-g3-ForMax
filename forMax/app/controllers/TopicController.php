@@ -32,6 +32,12 @@ class TopicController
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
         $topic_content = $_POST['topic_content'] ?? "";
         $topic_status = $_POST['topic_status'] ?? "";
+        $topic_private_key = $_POST['topic_private_key'];
+
+        if($topic_private_key != "")
+        {
+            $topic_private_key = password_hash($topic_private_key, PASSWORD_DEFAULT);
+        }
 
         if($topic_name != "" && $topic_content != "" && $topic_status != "")
         {
@@ -42,6 +48,7 @@ class TopicController
             $topic->update_timestamp = date("Y-m-d H:i:s");
             $topic->status = $topic_status;
             $topic->fk_user = $owner_id;
+            $topic->private_key = $topic_private_key;
 
             // TODO
             $topic->rank = 0;

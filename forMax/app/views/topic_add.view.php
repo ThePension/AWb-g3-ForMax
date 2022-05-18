@@ -14,12 +14,18 @@ require('partials/header.php');
             </div>
             <div class="col-12 mb-3">
                 <label for="topic_status" class="form-label">Status</label>
-                <select class="form-select" id="topic_status" name="topic_status">
+                <select class="form-select" id="topic_status" name="topic_status" onchange="topic_status_changed(this.value)">
                     <option selected value="PUBLIC">Public (Everyone can access your topic)</option>
                     <option value="PRIVATE">Private (Only people owning the topic's private key can access your topic)</option>
                     <option value="HIDDEN">Hidden (Only you can access your topic)</option>
                 </select>
             </div>
+
+            <div id="private_key_box" class="col-12 mb-3 d-none">
+                <label for="topic_private_key" class="form-label">Private key</label>
+                <input type="text" class="form-control" id="topic_private_key" name="topic_private_key" required>
+            </div>
+
             <div class="col-12 mb-3">
                 <label for="topic_content" class="form-label">Content</label>
                 <textarea rows="5" class="form-control" name="topic_content" id="topic_content" required></textarea>
@@ -31,5 +37,20 @@ require('partials/header.php');
         </form>
 	</div>
 </main>
+
+<script>
+    function topic_status_changed(val)
+    {
+        // Toggle private key input
+        if(val == "PRIVATE")
+        {
+            document.getElementById("private_key_box").classList.remove("d-none");
+        }
+        else
+        {
+            document.getElementById("private_key_box").classList.add("d-none");
+        }
+    }
+</script>
 
 <?php require('partials/footer.php'); ?>

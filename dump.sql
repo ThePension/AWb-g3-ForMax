@@ -40,6 +40,7 @@ CREATE TABLE `topic` (
   `creation_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `fk_user` int(11) NOT NULL,
   `status` char(10) NOT NULL DEFAULT 'HIDDEN',
+  `private_key` char(255),
   PRIMARY KEY (`id`),
   KEY `fk_user` (`fk_user`),
   CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`)
