@@ -14,5 +14,16 @@
             </footer>
         </div>
          <!-- Copyright -->
+
+        <script>
+            function close_box()
+            {
+                let elements = document.getElementsByClassName("info_box");
+                for(var i = 0, length = elements.length; i < length; i++)
+                {
+                    elements[i].style.display = 'none';
+                }
+            }
+        </script>
     </body>
 </html>
