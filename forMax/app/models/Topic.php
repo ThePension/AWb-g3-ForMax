@@ -97,11 +97,11 @@ class Topic extends Model
         $pathToTheTopic = "/" . Helper::createUrl("topic_show") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
-            "<div class='col card'>
+            "<div class='col card m-2'>
                 <div class='card-header'>
                 Author : "
                 .
-                    htmlentities($this->whoWroteTopic()) . " (" . htmlentities($this->status) . ")"
+                    htmlentities($this->whoWroteTopic())
                 .
                 "</div>
                 <div class='card-body'>

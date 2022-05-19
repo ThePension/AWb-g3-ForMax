@@ -11,9 +11,13 @@ require('partials/header.php');
 		if(isset($_SESSION[User::$UserAccessLevel]) && $_SESSION[User::$UserAccessLevel] == "logged")
 		{
 		?>
-		<div class="d-grid gap-2 d-md-block">
-			<a href='/<?= Helper::createUrl("topic_add") ?>'><button class='btn btn-success text-light' type="button">Create new topic</button></a>
-			<a href='/<?= Helper::createUrl("topic_subscribe") ?>'><button class='btn btn-info text-light' type="button">Subscribe to private topic</button></a>
+		<div class="row justify-content-md-center mb-3">
+			<div class="col-md-auto">
+				<a href='/<?= Helper::createUrl("topic_add") ?>'><button class='btn btn-success text-light' type="button">Create new topic</button></a>
+			</div>
+			<div class="col-md-auto">
+				<a href='/<?= Helper::createUrl("topic_subscribe") ?>'><button class='btn btn-info text-light' type="button">Subscribe to private topic</button></a>
+			</div>
 		</div>
 		<?php
 		}
