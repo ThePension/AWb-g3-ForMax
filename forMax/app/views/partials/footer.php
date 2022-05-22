@@ -24,6 +24,28 @@
                     elements[i].style.display = 'none';
                 }
             }
+
+            function addOrUpdateLike(topic_id_, value_)
+            {
+                let install_prefix = '<?php echo App::get('config')['install_prefix']; ?>';
+
+                var headers = {
+                    "Content-Type": "application/json",                                                                                            
+                    "Access-Control-Origin": "*"
+                };
+
+                var data = {
+                    "topic_id": topic_id_,
+                    "like_value": value_
+                };
+
+                fetch("/" + install_prefix + "/add_update_like_do", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: headers,
+                    body: JSON.stringify(data)
+                });
+            }
         </script>
     </body>
 </html>
