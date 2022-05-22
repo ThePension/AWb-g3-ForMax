@@ -97,7 +97,7 @@ class Topic extends Model
         $pathToTheTopic = "/" . Helper::createUrl("topic_show") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
-            "<div class='col card m-2'>
+            "<div class='col card mt-2' style='padding: 0 -10px'>
                 <div class='card-header'>
                 Author : "
                 .
@@ -177,10 +177,10 @@ class Topic extends Model
         {
             $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
                 $topicHtml .= 
-                        "<a id='btn_like' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
+                        "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
                                                                 $this->id . 
                                                                 ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a id='btn_dislike' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
+                        <a id='btn_dislike_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
                                                                 $this->id . 
                                                                 ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
             
