@@ -94,7 +94,7 @@ abstract class Model
         $statement->setFetchMode(PDO::FETCH_CLASS, $className);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     /**

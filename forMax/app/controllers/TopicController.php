@@ -92,8 +92,11 @@ class TopicController
 
             $topic = Topic::fetchId($id);
 
+            $comments = Comment::fetchByTopicId($id);
+
             return Helper::view("topic_show",[
-                'topic' => $topic
+                'topic' => $topic,
+                'comments' => $comments
             ]);
         }
     }

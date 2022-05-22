@@ -97,7 +97,7 @@ class Topic extends Model
         $pathToTheTopic = "/" . Helper::createUrl("topic_show") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
-            "<div class='col card mt-2' style='padding: 0 -10px'>
+            "<div class='col card mt-2'>
                 <div class='card-header'>
                 Author : "
                 .
