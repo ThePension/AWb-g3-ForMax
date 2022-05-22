@@ -11,16 +11,3 @@ deploy_prod:
         - git pull origin main
     only:
         - main
-deploy_qual:
-    stage: deploy
-    environment:
-        name: qual
-        url: 157.26.77.153
-    tags:
-        - appweb
-    script:
-        - cd /var/www/php/AWb-g3-ForMax/dev
-        - git checkout develop
-        - git pull origin develop
-    only:
-        - develop
