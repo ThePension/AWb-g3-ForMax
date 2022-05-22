@@ -154,15 +154,56 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>";
-        if(isset($_SESSION[User::$UserSessionId]) && $_SESSION[User::$UserSessionId] == $this->fk_user)
-        {
         $topicHtml .= "
-                    <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
+                    <div class='d-grid gap-2 d-md-flex justify-content-md-end'>";
+                        
+
+        // If the user is logged in
+        if(isset($_SESSION[User::$UserSessionId]))
+        {
+            $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
+
+            if($like != null)
+            {
+                if($like->value == 1)
+                {
+                    $topicHtml .= 
+                        "<a class='btn btn-danger'><i class=\"fa-solid fa-thumbs-up\"></i></a>
+                        <a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                                                                $this->id . 
+                                                                ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+                }
+                else
+                {
+                    $topicHtml .= 
+                        "<a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                                                            $this->id . 
+                                                            ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
+                        <a class='btn btn-danger'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+                }
+            }
+            else
+            {
+                $topicHtml .= 
+                        "<a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                                                                $this->id . 
+                                                                ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
+                        <a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                                                                $this->id . 
+                                                                ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+            }
+
+            
+            // If the logged in user owns the topic
+            if($_SESSION[User::$UserSessionId] == $this->fk_user)
+            {
+                $topicHtml .= "
                         <a href='/". $editPath ."' class='btn btn-secondary'><i class=\"fa-solid fa-pen\"></i></a>
-                        <a href='/". $deletePath ."' class='btn btn-danger'><i class=\"fa-solid fa-trash-can\"></i></a>
-                    </div>";
+                        <a href='/". $deletePath ."' class='btn btn-danger'><i class=\"fa-solid fa-trash-can\"></i></a>";
+            }
         }
         $topicHtml .= "
+                    </div>
                 </div>
                 <div class='card-footer text-muted container'>
                     <div class='row'>
