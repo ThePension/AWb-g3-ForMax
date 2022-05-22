@@ -162,37 +162,13 @@ class Topic extends Model
         if(isset($_SESSION[User::$UserSessionId]))
         {
             $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
-
-            if($like != null)
-            {
-                if($like->value == 1)
-                {
-                    $topicHtml .= 
-                        "<a class='btn btn-danger'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
-                                                                $this->id . 
-                                                                ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
-                }
-                else
-                {
-                    $topicHtml .= 
-                        "<a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
-                                                            $this->id . 
-                                                            ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a class='btn btn-danger'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
-                }
-            }
-            else
-            {
                 $topicHtml .= 
-                        "<a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                        "<a id='btn_like' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
                                                                 $this->id . 
                                                                 ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a class='btn btn-secondary' onclick='addOrUpdateLike(" . 
+                        <a id='btn_dislike' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
                                                                 $this->id . 
                                                                 ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
-            }
-
             
             // If the logged in user owns the topic
             if($_SESSION[User::$UserSessionId] == $this->fk_user)
