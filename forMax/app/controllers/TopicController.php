@@ -276,6 +276,13 @@ class TopicController
                     return (strstr($topic->name, $search) || strstr($topic->content, $search)) !== false && $topic->status == "PUBLIC";
                 });
             }
+
+            // Display message if no result found
+            if(count($public_topics) == 0)
+            {
+                $_SESSION['message_title'] = "Search result";
+                $_SESSION['message_description'] = "No result found.";
+            }
         }
 
         return Helper::view("topic_show_all",[
