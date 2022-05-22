@@ -16,7 +16,7 @@ class UserController
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                $user = User::fetchUsername($username);
+                $user = User::fetchUsername($username)[0];
 
                 if(empty($user))
                 {
