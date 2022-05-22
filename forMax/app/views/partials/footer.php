@@ -28,6 +28,7 @@
             async function addOrUpdateLike(topic_id_, value_)
             {
                 let install_prefix = '<?php echo App::get('config')['install_prefix']; ?>';
+                let user_id = '<?php echo $_SESSION[User::$UserSessionId] ?>';
 
                 var headers = {
                     "Content-Type": "application/json",                                                                                            
@@ -49,8 +50,8 @@
                 if(response.status == 200)
                 {
                     // Update colors
-                    let btn_like = document.getElementById("btn_like");
-                    let btn_dislike = document.getElementById("btn_dislike");
+                    let btn_like = document.getElementById("btn_like_" + topic_id_ + user_id);
+                    let btn_dislike = document.getElementById("btn_dislike_" + topic_id_ + user_id);
 
                     if(value_ == 1)
                     {
