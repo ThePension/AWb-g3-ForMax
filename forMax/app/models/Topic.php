@@ -113,7 +113,21 @@ class Topic extends Model
                         htmlentities($this->content)
                     .
                     "</p>
-                    <a href='". $pathToTheTopic ."' class='btn btn-info text-light'>Read further</a>
+                    <div class='d-grid gap-2 d-md-flex'>
+                        <a href='". $pathToTheTopic ."' class='btn btn-info text-light me-auto'>Read further</a>";
+                    if(isset($_SESSION[User::$UserSessionId]))
+                    {
+                        $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
+                        $topicHtml .= 
+                        "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
+                                                                        $this->id . 
+                                                                        ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
+                        <a id='btn_dislike_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
+                                                                        $this->id . 
+                                                                        ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+                    }
+        $topicHtml .= "
+                    </div>
                 </div>
                 <div class='card-footer text-muted container'>
                     <div class='row'>
