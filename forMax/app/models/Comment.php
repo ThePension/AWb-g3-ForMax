@@ -10,14 +10,27 @@ class Comment extends Model
     private $fk_user;
     private $fk_topic;
 
+    /**
+     * __set
+     *
+     * @param  mixed $property Is the property name
+     * @param  mixed $value is the value to be set
+     * @return void
+     */
     public function __set($property, $value)
     {
-        $this->property= $value;
+        $this->$property = $value;
     }
-
+    
+    /**
+     * __get
+     *
+     * @param  mixed $property The property name
+     * @return mixed The property value
+     */
     public function __get($property)
     {
-        return $this->property;
+        return $this->$property;
     }
 
     public function getAsBootstrap()
@@ -75,4 +88,23 @@ class Comment extends Model
         $user = User::fetchId($this->fk_user);
         return $user->username;
     }
+
+    /**
+     * save The commment in the database
+     *
+     * @return void
+     */
+    public function save()
+    {
+        $comment_values = [
+            "title" => $this->title,
+            "likes" => $this->likes,
+            "content" => $this->content,
+            "timestamp" => $this->timestamp,
+            "fk_user" => $this->fk_user,
+            "fk_topic" => $this->fk_topic,
+        ];
+
+        Model::create("comment", $comment_values);
+    } 
 }
