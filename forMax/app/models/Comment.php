@@ -22,6 +22,7 @@ class Comment extends Model
 
     public function getAsBootstrap()
     {
+        // Design based on : https://mdbootstrap.com/docs/standard/extended/comments/
         $comment_html = "";
 
         $comment_html .= "

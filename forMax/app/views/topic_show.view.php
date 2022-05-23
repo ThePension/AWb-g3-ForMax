@@ -20,6 +20,22 @@ require('partials/header.php');
 							<h4 class="mb-4">Comments</h4>
 
 							<?php
+							if(isset($_SESSION[User::$UserSessionId]))
+							{
+							?>
+								<form method="post" action="comment_add">
+									<div class="d-flex flex-start w-100">
+										<div class="form-outline w-100">
+											<textarea placeholder="Message" class="form-control" id="comment_content" name="comment_content" rows="4"></textarea>
+										</div>
+									</div>
+
+									<div class="float-end mt-2 pt-1">
+										<button type="submit" class="btn btn-info btn-sm text-light">Post comment</button>
+									</div>
+								</form>
+							<?php
+							}
 							if(count($comments) == 0)
 							{
 								echo "<p class='ps-4' >No comment yet</p>";
