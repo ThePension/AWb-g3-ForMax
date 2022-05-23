@@ -108,7 +108,6 @@ class TopicController
      */
     public function deleteTopic()
     {
-
         $user_id = $_SESSION[User::$UserSessionId] ?? null;
 
         if($user_id == null)

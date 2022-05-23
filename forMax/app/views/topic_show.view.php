@@ -26,10 +26,10 @@ require('partials/header.php');
 								<form method="post" action="comment_add">
 									<div class="d-flex flex-start w-100">
 										<div class="form-outline w-100">
-											<textarea placeholder="Message" class="form-control" id="comment_content" name="comment_content" rows="4"></textarea>
+											<textarea placeholder="Message" class="form-control" id="comment_content" name="comment_content" rows="4" required></textarea>
 										</div>
 									</div>
-
+									<input type="hidden" name="topic_id" id="topic_id" value="<?= $topic->id ?>" />
 									<div class="float-end mt-2 pt-1">
 										<button type="submit" class="btn btn-info btn-sm text-light">Post comment</button>
 									</div>
