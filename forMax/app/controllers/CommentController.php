@@ -44,9 +44,9 @@ class CommentController
             try
             {
                 $comment->save();
-                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
                 $_SESSION['message_title'] = "Addition successful";
                 $_SESSION['message_description'] = "The comment has been added.";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
             }
             catch(Exception $e)
             {
@@ -54,7 +54,6 @@ class CommentController
                 $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
                 Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
             }
-            
         }
         Helper::redirect(Helper::createUrl("topic_show_all"));
     }
@@ -66,6 +65,55 @@ class CommentController
 
     public function removeComment()
     {
-        // TODO
+        $topic_id = $_GET['topic_id'] ?? null;
+
+        if($topic_id == null)
+        {
+            $_SESSION['error_title'] = "Removing comment error";
+            $_SESSION['error_description'] = "Invalid topic";
+            Helper::redirect(Helper::createUrl("topic_show_all"));
+        }
+
+        $comment_id = $_GET['comment_id'] ?? null;
+
+        if($comment_id == null)
+        {
+            $_SESSION['error_title'] = "Removing comment error";
+            $_SESSION['error_description'] = "Invalid comment";
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+        if($user_id == null)
+        {
+            $_SESSION['error_title'] = "Can not remove a comment";
+            $_SESSION['error_description'] = "You must be logged in to remove one of your comments";
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+
+        $comment = Comment::fetchByCommentId($comment_id)[0];
+
+        if($comment == null)
+        {
+            $_SESSION['error_title'] = "Removing comment error";
+            $_SESSION['error_description'] = "This comment does not exist";
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+
+        try
+        {
+            $comment->remove();
+            $_SESSION['message_title'] = "Deletion successful";
+            $_SESSION['message_description'] = "The comment has been deleted.";
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+        catch(Exception $e)
+        {
+            $_SESSION['error_title'] = "Removing comment error";
+            $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+        Helper::redirect(Helper::createUrl("topic_show_all"));
     }
 }

@@ -23,7 +23,7 @@ require('partials/header.php');
 							if(isset($_SESSION[User::$UserSessionId]))
 							{
 							?>
-								<form method="post" action="comment_add">
+								<form method="post" action="comment_add" class="mb-5">
 									<div class="d-flex flex-start w-100">
 										<div class="form-outline w-100">
 											<textarea placeholder="Message" class="form-control" id="comment_content" name="comment_content" rows="4" required></textarea>

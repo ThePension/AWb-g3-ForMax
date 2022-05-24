@@ -38,33 +38,54 @@ class Comment extends Model
         // Design based on : https://mdbootstrap.com/docs/standard/extended/comments/
         $comment_html = "";
 
-        $comment_html .= "
-        <div class='card-body ps-4'>
-            <div class='d-flex flex-start'>
-                <div>
-                    <h6 class='fw-bold mb-1'>". htmlentities($this->whoWroteComment()) ."</h6>
-                    <div class='d-flex align-items-center mb-3'>
-                        <p class='mb-0'>"
-                        .
-                        htmlentities($this->timestamp)
-                        .
-                        "</p>
+        $user_id = $_SESSION[User::$UserSessionId] ?? null;
 
-                        <span class='ms-4'>". htmlentities($this->likes) . "</span>
-                        <a href='#!' class='link-muted'><i class='fas fa-heart ms-2'></i></a>
-                    </div>
-                    <p class='mb-0'>"
-                    . 
-                    htmlentities($this->content)
-                    .
-                    "</p>
-                </div>
+        $comment_html .= "
+        <hr class='my-0' />
+
+        <div class='card-body ps-4'>";
+        
+        if($user_id == $this->fk_user)
+        {
+            $comment_html .= "
+            <div class='float-end'>
+                <a href='/". Helper::createUrl("comment_delete?comment_id=" . $this->id . "&topic_id=" . $this->fk_topic) ."'>
+                    <button class='btn btn-info btn-sm text-light'>Delete</button>
+                </a>
+            </div>";
+        }
+        
+        $comment_html .= "
+            <h6 class='fw-bold mb-1'>". htmlentities($this->whoWroteComment()) ."</h6>
+            <div class='d-flex align-items-center mb-3'>
+                <p class='mb-0'>"
+                .
+                htmlentities($this->timestamp)
+                .
+                "</p>
+
+                <span class='ms-4'>". htmlentities($this->likes) . "</span>
+                <a href='#!' class='link-muted'><i class='fas fa-heart ms-2'></i></a>
             </div>
-        </div>
-            
-        <hr class='my-0' />";
+            <p class='mb-0 d-block'>"
+            . 
+            htmlentities($this->content)
+            .
+            "</p>
+        </div>";
 
         return $comment_html;
+    }
+
+    /**
+     * fetchByTopicId
+     *
+     * @param  mixed $topic_id The ID of the topic
+     * @return Comment array that contains all the comments of the topic
+     */
+    public static function fetchByTopicId($topic_id)
+    {
+        return Model::readByCriteria("comment", "Comment", "fk_topic", $topic_id);
     }
 
     /**
@@ -73,9 +94,9 @@ class Comment extends Model
      * @param  mixed $topic_id The ID of the topic
      * @return Comment array that contains all the comments of the topic
      */
-    public static function fetchByTopicId($topic_id)
+    public static function fetchByCommentId($comment_id)
     {
-        return Model::readByCriteria("comment", "Comment", "fk_topic", $topic_id);
+        return Model::readByCriteria("comment", "Comment", "id", $comment_id);
     }
 
     /**
@@ -107,4 +128,14 @@ class Comment extends Model
 
         Model::create("comment", $comment_values);
     } 
+
+    /**
+     * remove the comment from the database
+     *
+     * @return void
+     */
+    public function remove()
+    {
+        Model::delete('comment', $this->id);
+    }
 }
