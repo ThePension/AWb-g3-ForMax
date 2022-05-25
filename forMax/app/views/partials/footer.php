@@ -93,6 +93,8 @@
                     body: JSON.stringify(data)
                 });
 
+                console.log(response.json());
+
                 if(response.status == 200)
                 {
                     // Update colors

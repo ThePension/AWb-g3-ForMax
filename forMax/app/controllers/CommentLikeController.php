@@ -22,27 +22,36 @@ class CommentLikeController
 
                 $commentLike = CommentLike::fetchByUserIdAndCommentId($user_id, $comment_id)[0];
 
-                $comment = Comment::fetchByCommentId($comment_id)[0];
+                $comment = Comment::fetchByCommentId($comment_id);
 
-                if($commentLike != null)
+                try
                 {
-                    // Delete the like
-                    $commentLike->remove();
+                    if($commentLike != null)
+                    {
+                        // Delete the like
+                        $commentLike->remove();
 
-                    $comment->likes -= 1;
-                    $comment->modify();
+                        $comment->likes -= 1;
+                        $comment->modify();
+                    }
+                    else
+                    {
+                        // Create a like
+                        $commentLike = new CommentLike();
+                        $commentLike->fk_user = $user_id;
+                        $commentLike->fk_comment = $comment_id;
+
+                        $commentLike->save();
+
+                        $comment->likes += 1;
+                        $comment->modify();
+                    }
+
+                    echo Helper::getAjaxResponse("Comment updation successful");
                 }
-                else
+                catch (Exception $e)
                 {
-                    // Create a like
-                    $commentLike = new CommentLike();
-                    $commentLike->fk_user = $user_id;
-                    $commentLike->fk_comment = $comment_id;
-
-                    $commentLike->save();
-
-                    $comment->likes += 1;
-                    $comment->modify();
+                    echo Helper::getAjaxResponse($e->getMessage());
                 }
             }
         }
