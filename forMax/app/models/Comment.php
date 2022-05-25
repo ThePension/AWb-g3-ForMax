@@ -79,11 +79,14 @@ class Comment extends Model
                     <i id='btn_comment_like_" . $this->id . "' class='" . ($commentLike == null ? "far" : "fas") . " fa-heart ms-2'></i>
                 </a>
             </div>
-            <p class='mb-0 d-block'>
+            <p class='mb-0 d-block'>";
+                if($user_id == $this->fk_user)
+                {
+                    $comment_html .= "
                 <form method='post' action='comment_update' id='comment_update_form_". $this->id ."' class='mb-5 d-none'>
                     <div class='d-flex flex-start w-100'>
                         <div class='form-outline w-100'>
-                            <textarea class='form-control' id='comment_content' name='comment_content' rows='4' required>". $this->content ."</textarea>
+                            <textarea class='form-control' id='comment_content' name='comment_content' rows='4' required>". htmlentities($this->content) ."</textarea>
                         </div>
                     </div>
                     <input type='hidden' name='topic_id' id='topic_id' value='" . $this->fk_topic . "' />
@@ -91,7 +94,9 @@ class Comment extends Model
                     <div class='float-end mt-2 pt-1'>
                         <button type='submit' class='btn btn-info btn-sm text-light'>Update comment</button>
                     </div>
-                </form>
+                </form>";
+                }
+                $comment_html .= "
                 <p id='comment_content_" . $this->id . "'>"
                 . 
                     htmlentities($this->content)
