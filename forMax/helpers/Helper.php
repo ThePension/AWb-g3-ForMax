@@ -85,4 +85,9 @@ class Helper
 
         return in_array($path, App::get('config')['routes_authorized'], true);
     }
+
+    public static function getAjaxResponse($message)
+    {
+        return '{"message" : "'. $message . '"}';
+    }
 }
