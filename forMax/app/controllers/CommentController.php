@@ -155,7 +155,7 @@ class CommentController
             Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
         }
 
-        $comment = Comment::fetchByCommentId($comment_id)[0];
+        $comment = Comment::fetchByCommentId($comment_id);
 
         if($comment == null)
         {
