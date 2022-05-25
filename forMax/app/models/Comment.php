@@ -33,7 +33,7 @@ class Comment extends Model
         return $this->$property;
     }
 
-    public function getAsBootstrap()
+    public function getAsBootstrap($owner_id)
     {
         // Design based on : https://mdbootstrap.com/docs/standard/extended/comments/
         $comment_html = "";
@@ -45,7 +45,7 @@ class Comment extends Model
 
         <div class='card-body ps-4'>";
         
-        if($user_id == $this->fk_user)
+        if($user_id == $this->fk_user || $user_id == $owner_id)
         {
             $comment_html .= "
             <div class='float-end'>

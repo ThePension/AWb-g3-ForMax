@@ -47,7 +47,7 @@ require('partials/header.php');
 
 							foreach ($comments as $comment)
 							{
-								echo $comment->getAsBootstrap();
+								echo $comment->getAsBootstrap($topic->fk_user);
 							}
 							?>
 						</div>
