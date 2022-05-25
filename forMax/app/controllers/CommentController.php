@@ -60,7 +60,70 @@ class CommentController
 
     public function updateComment()
     {
-        // TODO
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $topic_id = $_POST['topic_id'] ?? null;
+
+            if($topic_id == null)
+            {
+                $_SESSION['error_title'] = "Updating comment error";
+                $_SESSION['error_description'] = "Invalid topic";
+                Helper::redirect(Helper::createUrl("topic_show_all"));
+            }
+
+            $comment_id = $_POST['comment_id'] ?? null;
+
+            if($comment_id == null)
+            {
+                $_SESSION['error_title'] = "Updating comment error";
+                $_SESSION['error_description'] = "Invalid comment";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+
+            $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+            if($user_id == null)
+            {
+                $_SESSION['error_title'] = "Can not update comment";
+                $_SESSION['error_description'] = "You must be logged in to update a comment";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+
+            $comment_content = $_POST['comment_content'] ?? "";
+            
+            if($comment_content == "")
+            {
+                $_SESSION['error_title'] = "Incorrect inputs";
+                $_SESSION['error_description'] = "Empty values";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+
+            $comment = Comment::fetchByCommentId($comment_id);
+
+            if($comment == null)
+            {
+                $_SESSION['error_title'] = "Updating comment error";
+                $_SESSION['error_description'] = "This comment does not exist";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+
+            $comment->content = $comment_content;
+
+            try
+            {
+                $comment->modify();
+                $_SESSION['message_title'] = "Modification successful";
+                $_SESSION['message_description'] = "The comment has been updated.";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+            catch(Exception $e)
+            {
+                $_SESSION['error_title'] = "Updating comment error";
+                $_SESSION['error_description'] = "Unknown error : " . $e->getMessage();
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+        }
+        Helper::redirect(Helper::createUrl("topic_show_all"));
     }
 
     public function removeComment()

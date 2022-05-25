@@ -44,14 +44,22 @@ class Comment extends Model
         <hr class='my-0' />
 
         <div class='card-body ps-4'>";
-        
+
         if($user_id == $this->fk_user || $user_id == $owner_id)
         {
             $comment_html .= "
             <div class='float-end'>
                 <a href='/". Helper::createUrl("comment_delete?comment_id=" . $this->id . "&topic_id=" . $this->fk_topic) ."'>
-                    <button class='btn btn-info btn-sm text-light'>Delete</button>
+                    <button class='btn btn-danger btn-sm text-light'>Delete</button>
                 </a>
+            </div>";
+        }
+
+        if($user_id == $this->fk_user)
+        {
+            $comment_html .= "
+            <div class='float-end me-3'>
+                <button id='btn_update_comment_". $this->id ."' class='btn btn-info btn-sm text-light' onclick='show_comment_update_form(". $this->id .")'>Update</button>
             </div>";
         }
 
@@ -62,7 +70,7 @@ class Comment extends Model
             <div class='d-flex align-items-center mb-3'>
                 <p class='mb-0'>"
                 .
-                htmlentities($this->timestamp)
+                    htmlentities($this->timestamp)
                 .
                 "</p>
 
@@ -71,11 +79,25 @@ class Comment extends Model
                     <i id='btn_comment_like_" . $this->id . "' class='" . ($commentLike == null ? "far" : "fas") . " fa-heart ms-2'></i>
                 </a>
             </div>
-            <p class='mb-0 d-block'>"
-            . 
-            htmlentities($this->content)
-            .
-            "</p>
+            <p class='mb-0 d-block'>
+                <form method='post' action='comment_update' id='comment_update_form_". $this->id ."' class='mb-5 d-none'>
+                    <div class='d-flex flex-start w-100'>
+                        <div class='form-outline w-100'>
+                            <textarea class='form-control' id='comment_content' name='comment_content' rows='4' required>". $this->content ."</textarea>
+                        </div>
+                    </div>
+                    <input type='hidden' name='topic_id' id='topic_id' value='" . $this->fk_topic . "' />
+                    <input type='hidden' name='comment_id' id='comment_id' value='" . $this->id . "' />
+                    <div class='float-end mt-2 pt-1'>
+                        <button type='submit' class='btn btn-info btn-sm text-light'>Update comment</button>
+                    </div>
+                </form>
+                <p id='comment_content_" . $this->id . "'>"
+                . 
+                    htmlentities($this->content)
+                .
+                "</p>
+            </p>
         </div>";
 
         return $comment_html;
@@ -100,7 +122,7 @@ class Comment extends Model
      */
     public static function fetchByCommentId($comment_id)
     {
-        return Model::readByCriteria("comment", "Comment", "id", $comment_id);
+        return Model::readByCriteria("comment", "Comment", "id", $comment_id)[0];
     }
 
     /**

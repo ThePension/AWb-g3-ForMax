@@ -117,6 +117,26 @@
                     }
                 }
             }
+
+            function show_comment_update_form(comment_id)
+            {
+                let form_comment_like = document.getElementById("comment_update_form_" + comment_id);
+                let btn_update_comment = document.getElementById("btn_update_comment_" + comment_id);
+                let p_comment_content = document.getElementById("comment_content_" + comment_id);
+
+                if(form_comment_like.classList.contains("d-none"))
+                {
+                    form_comment_like.classList.remove("d-none");
+                    p_comment_content.classList.add("d-none");
+                    btn_update_comment.textContent = "Abort";
+                }
+                else
+                {
+                    btn_update_comment.textContent = "Update";
+                    form_comment_like.classList.add("d-none");
+                    p_comment_content.classList.remove("d-none");
+                }
+            }
         </script>
     </body>
 </html>
