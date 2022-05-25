@@ -23,6 +23,11 @@ require('partials/header.php');
                 </select>
             </div>
 
+            <div class="mb-3">
+                <label for="topic_comments_on" class="form-label">Active comments ?</label>
+                <input type="checkbox" <?= ($topic->comments_on == 1 ? "checked" : "") ?> name="topic_comments_on" id="topic_comments_on" />
+            </div>
+
 
             <div id="private_key_button_box" class="col-12 mb-3 <?= $topic->status != "PRIVATE" ? "d-none" : "" ?>">
                 <button class="btn btn-success" type="button" onclick="topic_modify_private_key()">Update private key</button>

@@ -11,6 +11,10 @@ require('partials/header.php');
 		<?= $topic->getAsBootstrapGridForTopicPage(); ?>
 	</div>
 
+	<?php
+	if($topic->comments_on)
+	{
+	?>
 	<section>
 		<div class="container my-5 py-2">
 			<div class="row d-flex justify-content-center">
@@ -52,6 +56,9 @@ require('partials/header.php');
 			</div>
 		</div>
 	</section>
+	<?php
+	}
+	?>
 </main>
 
 <?php require('partials/footer.php'); ?>

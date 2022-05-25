@@ -11,6 +11,7 @@ class Topic extends Model
     private $fk_user;
     private $status; // PRIVATE, PUBLIC, HIDDEN
     private $private_key;
+    private $comments_on; // 1 = True, 0 = False
  
     /**
      * __set
@@ -82,6 +83,7 @@ class Topic extends Model
             "fk_user" => $this->fk_user,
             "status" => $this->status,
             "private_key" => $this->private_key,
+            "comments_on" => $this->comments_on
         ];
 
         Model::create("topic", $topic_values);
@@ -240,6 +242,7 @@ class Topic extends Model
             'update_timestamp' => date("Y-m-d H:i:s"),
             'status' => $this->status,
             "private_key" => $this->private_key,
+            "comments_on" => $this->comments_on
         ];
 
         Model::update("topic", $this->id, $params);
