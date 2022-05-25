@@ -33,15 +33,15 @@ Il y aura aussi deux types d'utilisateurs, des utilisateurs authentifiés classi
 
 | numéro | description | état |
 |---|---|---|
-| 1 | Visualiser les différents sujets (données simulées) | OK |
-| 2 | Modération des sujets par leur créateur (CRUD sur des données réelles) | OK |
-| 3 | Gestion des comptes (login) | OK |
-| 4 | Mode visiteur | OK |
-| 5 | Mise en place des sujets privés avec clé d'accès | OK |
-| 6 | Espace commentaire + Like, Dislike |  |
-| 7 | Possibilité de personnaliser son compte |  |
-| 8 | Notifications asynchrones |  |
-| 9 | Sujets favoris plus facilement accessibles |  |
-| 10 | Ordonner les sujets en fonction de leur référencement |  |
+| 1 | Visualiser les différents sujets (données simulées) | DONE |
+| 2 | Modération des sujets par leur créateur (CRUD sur des données réelles) | DONE |
+| 3 | Gestion des comptes (login) | DONE |
+| 4 | Mode visiteur | DONE |
+| 5 | Mise en place des sujets privés avec clé d'accès | DONE |
+| 6 | Espace commentaire + Like, Dislike | DONE |
+| 7 | Possibilité de personnaliser son compte | TODO |
+| 8 | Notifications asynchrones | TODO |
+| 9 | Sujets favoris plus facilement accessibles | TODO |
+| 10 | Ordonner les sujets en fonction de leur référencement | TODO |
 
 (numéro plus haut == plus basse priorité)
