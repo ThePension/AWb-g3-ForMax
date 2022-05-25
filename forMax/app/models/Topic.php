@@ -39,7 +39,7 @@ class Topic extends Model
     /**
      * fetchAll
      *
-     * @return Topic array that contains all the topics
+     * @return Array of topics
      */
     public static function fetchAll()
     {
