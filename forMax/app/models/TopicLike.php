@@ -1,6 +1,6 @@
 <?php
 
-class Like extends Model
+class TopicLike extends Model
 {
     private $fk_user;
     private $fk_topic;
@@ -36,7 +36,7 @@ class Like extends Model
      */
     public static function fetchAll()
     {
-        $allLikes = Model::readAll("like", "Like");
+        $allLikes = Model::readAll("topiclike", "TopicLike");
 
         return $allLikes; // TODO : Upgrade
     }
@@ -45,35 +45,35 @@ class Like extends Model
      * fetchByUserId
      *
      * @param  mixed $user_id The ID of the user
-     * @return Like array that contains all the liked topic by te user
+     * @return TopicLike array that contains all the liked topic by te user
      */
     public static function fetchByUserId($user_id)
     {
         // ASSUMPTION
         //    - $id was validated by the caller
 
-        return Model::readByCriteria("like", "Like", "fk_user", $user_id);
+        return Model::readByCriteria("topiclike", "TopicLike", "fk_user", $user_id);
     }
 
      /**
      * fetchByTopicId
      *
      * @param  mixed $topic_id The ID of the topic
-     * @return Like array that contains all the likes of the topic
+     * @return TopicLike array that contains all the likes of the topic
      */
     public static function fetchByTopicId($topic_id)
     {
         // ASSUMPTION
         //    - $id was validated by the caller
 
-        return Model::readByCriteria("like", "Like", "fk_topic", $topic_id);
+        return Model::readByCriteria("topiclike", "TopicLike", "fk_topic", $topic_id);
     }
 
     /**
      * fetchByUserIdAndTopicId
      *
      * @param  mixed $topic_id The ID of the topic
-     * @return Like array that contains all the likes of the topic
+     * @return TopicLike array that contains all the likes of the topic
      */
     public static function fetchByUserIdAndTopicId($user_id, $topic_id)
     {
@@ -82,7 +82,7 @@ class Like extends Model
             "fk_topic" => $topic_id
         ];
 
-        return Model::readByCriterias("like", "Like", $like_criterias);
+        return Model::readByCriterias("topiclike", "TopicLike", $like_criterias);
     }
 
     /**
@@ -98,7 +98,7 @@ class Like extends Model
             "value" => $this->value
         ];
 
-        Model::create("like", $like_values);
+        Model::create("topiclike", $like_values);
     } 
 
     /**
@@ -117,6 +117,6 @@ class Like extends Model
             "value" => $this->value
         ];
 
-        Model::updateByCriterias("like", $criterias, $params);
+        Model::updateByCriterias("topiclike", $criterias, $params);
     }
 }

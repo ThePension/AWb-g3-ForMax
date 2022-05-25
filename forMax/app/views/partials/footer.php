@@ -71,6 +71,52 @@
                     }
                 }
             }
+
+            async function comment_like(comment_id, topic_id)
+            {
+                let install_prefix = '<?php echo App::get('config')['install_prefix']; ?>';
+                let user_id = '<?php echo $_SESSION[User::$UserSessionId] ?>';
+
+                var headers = {
+                    "Content-Type": "application/json",                                                                                            
+                    "Access-Control-Origin": "*"
+                };
+
+                var data = {
+                    "comment_id": comment_id
+                };
+
+                let response = await fetch("/" + install_prefix + "/comment_add_remove_like", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: headers,
+                    body: JSON.stringify(data)
+                });
+
+                if(response.status == 200)
+                {
+                    // Update colors
+                    let btn_comment_like = document.getElementById("btn_comment_like_" + comment_id);
+                    let like_counter = document.getElementById("likeCounter" + comment_id);
+
+                    if(btn_comment_like.classList.contains("far"))
+                    {
+                        btn_comment_like.classList.remove("far");
+                        btn_comment_like.classList.add("fas");
+
+                        count = parseInt(like_counter.textContent);
+                        like_counter.textContent = count + 1;
+                    }
+                    else
+                    {
+                        btn_comment_like.classList.remove("fas");
+                        btn_comment_like.classList.add("far"); 
+
+                        count = parseInt(like_counter.textContent);
+                        like_counter.textContent = count - 1;
+                    }
+                }
+            }
         </script>
     </body>
 </html>

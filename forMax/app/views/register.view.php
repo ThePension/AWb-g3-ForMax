@@ -16,7 +16,7 @@
 
                         <form method="POST" action="/<?= Helper::createUrl("register_do") ?>">
                             <div class="form-outline mb-4">
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" />
+                                <input type="text" id="username"  name="username" class="form-control form-control-lg" />
                                 <label class="form-label" for="username">Username</label>
                             </div>
 

@@ -54,6 +54,8 @@ class Comment extends Model
                 </a>
             </div>";
         }
+
+        $commentLike = CommentLike::fetchByUserIdAndCommentId($user_id, $this->id);
         
         $comment_html .= "
             <h6 class='fw-bold mb-1'>". htmlentities($this->whoWroteComment()) ."</h6>
@@ -64,8 +66,10 @@ class Comment extends Model
                 .
                 "</p>
 
-                <span class='ms-4'>". htmlentities($this->likes) . "</span>
-                <a href='#!' class='link-muted'><i class='fas fa-heart ms-2'></i></a>
+                <span class='ms-4' id='likeCounter". $this->id ."'>". htmlentities($this->likes) . "</span>
+                <a onclick='comment_like(". $this->id . ", " . $this->topic_id . ")' class='link-muted'>
+                    <i id='btn_comment_like_" . $this->id . "' class='" . ($commentLike == null ? "far" : "fas") . " fa-heart ms-2'></i>
+                </a>
             </div>
             <p class='mb-0 d-block'>"
             . 
@@ -137,5 +141,24 @@ class Comment extends Model
     public function remove()
     {
         Model::delete('comment', $this->id);
+    }
+
+    /**
+     * modify the comment in the database
+     *
+     * @return void
+     */
+    public function modify()
+    {
+        $comment_values = [
+            "title" => $this->title,
+            "likes" => $this->likes,
+            "content" => $this->content,
+            "timestamp" => $this->timestamp,
+            "fk_user" => $this->fk_user,
+            "fk_topic" => $this->fk_topic,
+        ];
+
+        Model::update("comment", $this->id, $comment_values);
     }
 }

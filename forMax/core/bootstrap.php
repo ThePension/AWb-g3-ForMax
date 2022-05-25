@@ -12,7 +12,8 @@ require 'core/database/Model.php';
 require "app/models/Comment.php";
 require "app/models/Topic.php";
 require "app/models/User.php";
-require "app/models/Like.php";
+require "app/models/TopicLike.php";
+require "app/models/CommentLike.php";
 
 App::load_config("config.php");
 
