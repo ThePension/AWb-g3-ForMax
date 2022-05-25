@@ -107,6 +107,14 @@ class CommentController
                 Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
             }
 
+            // If the logged in user is not the owner
+            if($comment->fk_user != $user_id)
+            {
+                $_SESSION['error_title'] = "Updating comment error";
+                $_SESSION['error_description'] = "You must be the owner of the comment to edit it.";
+                Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+            }
+
             $comment->content = $comment_content;
 
             try
@@ -161,6 +169,16 @@ class CommentController
         {
             $_SESSION['error_title'] = "Removing comment error";
             $_SESSION['error_description'] = "This comment does not exist";
+            Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
+        }
+
+        $topic = Topic::fetchId($comment->fk_topic);
+
+        // If the logged in user is not the owner and is not the owner of the topic
+        if($comment->fk_user != $user_id && $topic->fk_user != $user_id)
+        {
+            $_SESSION['error_title'] = "Deleting comment error";
+            $_SESSION['error_description'] = "You must be the owner of the comment or the topic to delete this comment.";
             Helper::redirect(Helper::createUrl("topic_show?id=" . $topic_id));
         }
 
