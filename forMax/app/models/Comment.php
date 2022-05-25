@@ -75,7 +75,10 @@ class Comment extends Model
                 "</p>
 
                 <span class='ms-4' id='likeCounter". $this->id ."'>". htmlentities($this->likes) . "</span>
-                <a onclick='comment_like(". $this->id . ", " . $this->topic_id . ")' class='link-muted'>
+                <a " . 
+                    ($user_id != null ? "onclick='comment_like(". $this->id . ", " . $this->topic_id . ")'" : "")
+                    
+                    . " class='link-muted'>
                     <i id='btn_comment_like_" . $this->id . "' class='" . ($commentLike == null ? "far" : "fas") . " fa-heart ms-2'></i>
                 </a>
             </div>
