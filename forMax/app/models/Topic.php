@@ -99,55 +99,55 @@ class Topic extends Model
         $pathToTheTopic = "/" . Helper::createUrl("topic_show") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
-            "<div class='col card mt-2'>
-                <div class='card-header'>
-                Author : "
+            '<div class="col card mt-2">
+                <div class="card-header">
+                Author : '
                 .
                     htmlentities($this->whoWroteTopic())
                 .
-                "</div>
-                <div class='card-body'>
-                    <h5 class='card-title'>".
+                '</div>
+                <div class="card-body">
+                    <h5 class="card-title">'.
                         htmlentities($this->name)
-                    ."</h5>
-                    <p class='card-text text-truncate-container'>"
+                    .'</h5>
+                    <p class="card-text text-truncate-container">'
                     .
                         htmlentities($this->content)
                     .
-                    "</p>
-                    <div class='d-grid gap-2 d-md-flex'>
-                        <a href='". $pathToTheTopic ."' class='btn btn-info text-light me-auto'>Read further</a>";
+                    '</p>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <a href="'. $pathToTheTopic .'" class="btn btn-info text-light me-auto">Read further</a>';
                     if(isset($_SESSION[User::$UserSessionId]))
                     {
                         $like = TopicLike::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
                         $topicHtml .= 
-                        "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
+                        '<a id="btn_like_'. $this->id . $_SESSION[User::$UserSessionId] .'" class="btn ' . ($like->value == 1 ? 'btn-danger' : 'btn-secondary') . '" onclick="addOrUpdateLike(' . 
                                                                         $this->id . 
-                                                                        ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a id='btn_dislike_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
+                                                                        ', 1)"><i class="fa-solid fa-thumbs-up"></i></a>
+                        <a id="btn_dislike_'. $this->id . $_SESSION[User::$UserSessionId] .'" class="btn '. ($like->value == -1 ? 'btn-danger' : 'btn-secondary') .'" onclick="addOrUpdateLike(' . 
                                                                         $this->id . 
-                                                                        ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+                                                                        ', -1)"><i class="fa-solid fa-thumbs-down"></i></a>';
                     }
-        $topicHtml .= "
+        $topicHtml .= '
                     </div>
                 </div>
-                <div class='card-footer text-muted container'>
-                    <div class='row'>
-                        <p class='col text-start'>
-                            created on "
+                <div class="card-footer text-muted container">
+                    <div class="row">
+                        <p class="col text-start">
+                            created on '
                             .
                                 htmlentities($this->creation_timestamp)
                             .   
-                        "</p>
-                        <p class='col text-end'>
-                            updated on "
+                        '</p>
+                        <p class="col text-end">
+                            updated on '
                             .
                                 htmlentities($this->update_timestamp)
                             .   
-                        "</p>
+                        '</p>
                     </div>
                 </div>
-            </div>";
+            </div>';
 
         return $topicHtml;
     }
@@ -163,15 +163,15 @@ class Topic extends Model
         $editPath = Helper::createUrl("topic_update") . "?id=" . htmlentities($this->id);
 
         $topicHtml = 
-            "<div class='col-sm m-1 card mt-3'>
-                <div class='card-body'>
-                    <p class='card-text'>"
+            '<div class="col-sm m-1 card mt-3">
+                <div class="card-body">
+                    <p class="card-text">'
                     .
                         htmlentities($this->content)
                     .
-                    "</p>";
-        $topicHtml .= "
-                    <div class='d-grid gap-2 d-md-flex justify-content-md-end'>";
+                    '</p>';
+        $topicHtml .= '
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">';
                         
 
         // If the user is logged in
@@ -179,41 +179,41 @@ class Topic extends Model
         {
             $like = TopicLike::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
                 $topicHtml .= 
-                        "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
+                        '<a id="btn_like_'. $this->id . $_SESSION[User::$UserSessionId] .'" class="btn ' . ($like->value == 1 ? 'btn-danger' : 'btn-secondary') . '" onclick="addOrUpdateLike(' . 
                                                                 $this->id . 
-                                                                ", 1)'><i class=\"fa-solid fa-thumbs-up\"></i></a>
-                        <a id='btn_dislike_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn ". ($like->value == -1 ? "btn-danger" : "btn-secondary") ."' onclick='addOrUpdateLike(" . 
+                                                                ', 1)"><i class="fa-solid fa-thumbs-up"></i></a>
+                        <a id="btn_dislike_'. $this->id . $_SESSION[User::$UserSessionId] .'" class="btn '. ($like->value == -1 ? 'btn-danger' : 'btn-secondary') .'" onclick="addOrUpdateLike(' . 
                                                                 $this->id . 
-                                                                ", -1)'><i class=\"fa-solid fa-thumbs-down\"></i></a>";
+                                                                ', -1)"><i class="fa-solid fa-thumbs-down"></i></a>';
             
             // If the logged in user owns the topic
             if($_SESSION[User::$UserSessionId] == $this->fk_user)
             {
-                $topicHtml .= "
-                        <a href='/". $editPath ."' class='btn btn-secondary'><i class=\"fa-solid fa-pen\"></i></a>
-                        <a href='/". $deletePath ."' class='btn btn-danger'><i class=\"fa-solid fa-trash-can\"></i></a>";
+                $topicHtml .= '
+                        <a href="/'. $editPath .'" class="btn btn-secondary"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/'. $deletePath .'" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>';
             }
         }
-        $topicHtml .= "
+        $topicHtml .= '
                     </div>
                 </div>
-                <div class='card-footer text-muted container'>
-                    <div class='row'>
-                        <p class='col text-start'>
-                            created on "
+                <div class="card-footer text-muted container">
+                    <div class="row">
+                        <p class="col text-start">
+                            created on '
                             .
                                 htmlentities($this->creation_timestamp)
                             .   
-                        "</p>
-                        <p class='col text-end'>
-                            updated on "
+                        '</p>
+                        <p class="col text-end">
+                            updated on '
                             .
                                 htmlentities($this->update_timestamp)
                             .   
-                        "</p>
+                        '</p>
                     </div>
                 </div>
-            </div>";
+            </div>';
 
         return $topicHtml;
     }
@@ -225,7 +225,7 @@ class Topic extends Model
      */
     public function getTitleForTopicPage()
     {
-        return htmlentities($this->name) . ", created by " . htmlentities($this->whoWroteTopic());
+        return htmlentities($this->name) . ', created by ' . htmlentities($this->whoWroteTopic());
     }
     
     /**
