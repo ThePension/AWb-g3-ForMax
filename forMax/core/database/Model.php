@@ -187,4 +187,26 @@ abstract class Model
 
         $statement->execute();
     }
+
+    /**
+     * DELETE FROM
+     * @param String $table Table name
+     * @param Array $criterias The criterias
+     */
+    protected static function deleteByCriteria($table, $criterias)
+    {
+        $dbh = App::get('dbh');
+
+        $criteria_keys = array_keys($criterias);
+        $criteria_tab_set = array_map(function ($k) { return "{$k}=:{$k}"; }, $criteria_keys);
+        $criteria_set_string = implode(" AND ", $criteria_tab_set);
+
+        $req = "DELETE FROM `{$table}` WHERE  {$criteria_set_string};";
+
+        $statement = $dbh->prepare($req);
+
+        array_map(function ($key, $value) use($statement) { $statement->bindParam(":{$key}", $value); }, array_keys($criterias), array_values($criterias));
+
+        $statement->execute();
+    }
 }

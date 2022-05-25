@@ -1,6 +1,6 @@
 <?php
 
-class LikeController
+class TopicLikeController
 {
     public function addOrUpdateLike()
     {    
@@ -26,12 +26,12 @@ class LikeController
 
         $user_id = $_SESSION[User::$UserSessionId];
 
-        $like = Like::fetchByUserIdAndTopicId($user_id, $topic_id)[0];
+        $like = TopicLike::fetchByUserIdAndTopicId($user_id, $topic_id)[0];
 
         if($like == null)
         {
             // Add like
-            $like = new Like();
+            $like = new TopicLike();
             $like->fk_topic = $topic_id;
             $like->fk_user = $_SESSION[User::$UserSessionId];
             $like->value = $like_value;

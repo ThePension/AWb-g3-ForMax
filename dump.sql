@@ -30,21 +30,36 @@ INSERT INTO `comment` (`id`, `title`, `likes`, `content`, `timestamp`, `fk_user`
 (2,	'bel article',	0,	'Cet article décrit très bien les cerisiers merci bien !',	'2022-04-02 09:53:01',	3,	1),
 (3,	'Passablement bon',	0,	'C\'est un aliment tout à fait sympathique !',	'2022-04-02 09:53:42',	2,	3);
 
-DROP TABLE IF EXISTS `like`;
-CREATE TABLE `like` (
+DROP TABLE IF EXISTS `topiclike`;
+CREATE TABLE `topiclike` (
   `fk_user` int(11) NOT NULL,
   `fk_topic` int(11) NOT NULL,
   `value` int(1) NOT NULL,
   PRIMARY KEY (`fk_user`,`fk_topic`),
   KEY `fk_topic` (`fk_topic`),
-  CONSTRAINT `like_ibfk_1` FOREIGN KEY (`fk_topic`) REFERENCES `topic` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `like_ibfk_2` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`) ON DELETE CASCADE
+  CONSTRAINT `topiclike_ibfk_1` FOREIGN KEY (`fk_topic`) REFERENCES `topic` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `topiclike_ibfk_2` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `like` (`fk_user`, `fk_topic`, `value`) VALUES
+INSERT INTO `topiclike` (`fk_user`, `fk_topic`, `value`) VALUES
 (1,	2, 1),
 (2,	3, -1),
 (3,	1, 1);
+
+DROP TABLE IF EXISTS `commentlike`;
+CREATE TABLE `commentlike` (
+  `fk_user` int(11) NOT NULL,
+  `fk_comment` int(11) NOT NULL,
+  PRIMARY KEY (`fk_user`,`fk_comment`),
+  KEY `fk_comment` (`fk_comment`),
+  CONSTRAINT `commentlike_ibfk_1` FOREIGN KEY (`fk_comment`) REFERENCES `comment` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `commentlike_ibfk_2` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `commentlike` (`fk_user`, `fk_comment`) VALUES
+(1,	2),
+(2,	3),
+(3,	1);
 
 
 DROP TABLE IF EXISTS `topic`;

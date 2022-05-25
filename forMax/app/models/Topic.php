@@ -117,7 +117,7 @@ class Topic extends Model
                         <a href='". $pathToTheTopic ."' class='btn btn-info text-light me-auto'>Read further</a>";
                     if(isset($_SESSION[User::$UserSessionId]))
                     {
-                        $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
+                        $like = TopicLike::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
                         $topicHtml .= 
                         "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
                                                                         $this->id . 
@@ -175,7 +175,7 @@ class Topic extends Model
         // If the user is logged in
         if(isset($_SESSION[User::$UserSessionId]))
         {
-            $like = Like::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
+            $like = TopicLike::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
                 $topicHtml .= 
                         "<a id='btn_like_". $this->id . $_SESSION[User::$UserSessionId] ."' class='btn " . ($like->value == 1 ? "btn-danger" : "btn-secondary") . "' onclick='addOrUpdateLike(" . 
                                                                 $this->id . 

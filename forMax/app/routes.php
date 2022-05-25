@@ -25,5 +25,6 @@ $router->define([
   'topic_addFavorite' => 'TopicController@makeFavorite',
   'account' => 'UserController@account',
   'my_topics' => 'TopicController@showMyTopics',
-  'add_update_like_do' => 'LikeController@addOrUpdateLike'
+  'add_update_like_do' => 'TopicLikeController@addOrUpdateLike',
+  'comment_add_remove_like' => 'CommentLikeController@AddOrRemoveLike'
 ]);
