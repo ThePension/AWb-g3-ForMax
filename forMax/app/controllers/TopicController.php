@@ -32,7 +32,8 @@ class TopicController
         $topic_name = $_POST['topic_name'] ?? ""; // Shorthand for 'isset() ? ... : ...'
         $topic_content = $_POST['topic_content'] ?? "";
         $topic_status = $_POST['topic_status'] ?? "";
-        $topic_private_key = $_POST['topic_private_key'];
+        $topic_private_key = $_POST['topic_private_key'] ?? "";
+        $topic_comments_on = (isset($_POST['topic_comments_on']) ? 1 : 0);
 
         if($topic_private_key != "")
         {
@@ -49,6 +50,7 @@ class TopicController
             $topic->status = $topic_status;
             $topic->fk_user = $owner_id;
             $topic->private_key = $topic_private_key;
+            $topic->comments_on = $topic_comments_on;
 
             // TODO
             $topic->rank = 0;
@@ -72,7 +74,7 @@ class TopicController
         else
         {
             $_SESSION['error_title'] = "Adding topic error";
-            $_SESSION['error_description'] = "Missing information(s)";
+            $_SESSION['error_description'] = "Missing information(s). Comments_on : " . $topic_comments_on;
             Helper::redirect(Helper::createUrl("topic_add"));
         }
 
@@ -208,6 +210,25 @@ class TopicController
                 $topic_content = $_POST['topic_content'] ?? "";
                 $topic_status = $_POST['topic_status'] ?? "";
                 $topic_private_key = $_POST['topic_private_key'] ?? "";
+                $topic_comments_on = (isset($_POST['topic_comments_on']) ? 1 : 0);
+
+                if(!$topic_comments_on)
+                {
+                    // Delete all comments related to the topic
+                    $comments = Comment::fetchByTopicId($topic->id);
+
+                    foreach($comments as $comment)
+                    {
+                        try
+                        {
+                            $comment->remove();
+                        }
+                        catch (Exception $e)
+                        {
+
+                        }
+                    }
+                }
 
                 if($topic_private_key != "")
                 {
@@ -221,6 +242,7 @@ class TopicController
                     $topic->name = $topic_name;
                     $topic->content = $topic_content;
                     $topic->status = $topic_status;
+                    $topic->comments_on = $topic_comments_on;
 
                     if($topic->status != "PRIVATE")
                     {
