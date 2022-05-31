@@ -283,7 +283,7 @@ class TopicController
      */
     public function showAllTopics()
     {
-        $topics = Topic::fetchAll();        
+        $topics = Topic::fetchAllOrderBy("rank DESC");        
 
         $public_topics = array_filter($topics, function($topic) use (&$search) {
             return $topic->status == "PUBLIC";

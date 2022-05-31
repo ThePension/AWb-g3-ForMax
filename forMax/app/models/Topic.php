@@ -50,7 +50,7 @@ class Topic extends Model
 
     public static function fetchAllOrderBy($column)
     {
-        // TODO
+        return Model::readAllOrderBy("topic", "Topic", $column);
     }
     
     /**
