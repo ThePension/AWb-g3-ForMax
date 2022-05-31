@@ -133,6 +133,17 @@ class Comment extends Model
         return Model::readByCriteria("comment", "Comment", "id", $comment_id)[0];
     }
 
+    public static function fetchAllByTopicIdOrderBy($topic_id, $column)
+    {
+        $comments = Model::readByCriteria("comment", "Comment", "fk_topic", $topic_id);
+        usort($comments, function($comment1, $comment2)
+        {
+            return strcmp($comment1->likes, $comment2->likes);
+        });
+
+        return array_reverse($comments);
+    }
+
     /**
      * whoWroteComment
      *

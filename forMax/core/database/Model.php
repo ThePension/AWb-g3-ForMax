@@ -58,6 +58,24 @@ abstract class Model
         return $statement->fetchAll(PDO::FETCH_CLASS, $className);
     }
 
+        /**
+     * SELECT * FROM ORDER BY
+     * @param String $table Table name
+     * @param String $className The class name
+     * @param String $orderBy The column name
+     * @return Array The model
+     */
+    protected static function readAllByIdOrderBy($table, $className, $id, $orderBy)
+    {
+        $dbh = App::get('dbh');
+
+        $statement = $dbh->prepare("SELECT * FROM `{$table}` WHERE id=:model_id ORDER BY {$orderBy};");
+        $statement->bindParam(':model_id', $id);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, $className);
+    }
+
     /**
      * SELECT * FROM $table WHERE Id
      * @param String $table Table name
