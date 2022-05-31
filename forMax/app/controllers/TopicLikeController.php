@@ -28,6 +28,9 @@ class TopicLikeController
 
         $like = TopicLike::fetchByUserIdAndTopicId($user_id, $topic_id)[0];
 
+        $topic = Topic::fetchId($topic_id);
+        $topic->rank += $like_value;
+
         if($like == null)
         {
             // Add like
@@ -39,6 +42,8 @@ class TopicLikeController
             try
             {
                 $like->save();
+
+                $topic->modify();
             }
             catch (Exception $e)
             {
@@ -54,6 +59,8 @@ class TopicLikeController
             try
             {
                 $like->modify();
+
+                $topic->modify();
             }
             catch (Exception $e)
             {
