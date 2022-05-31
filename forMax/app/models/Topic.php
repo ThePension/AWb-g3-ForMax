@@ -116,7 +116,12 @@ class Topic extends Model
                     .
                     '</p>
                     <div class="d-grid gap-2 d-md-flex">
-                        <a href="'. $pathToTheTopic .'" class="btn btn-info text-light me-auto">Read further</a>';
+                        <a href="'. $pathToTheTopic .'" class="btn btn-info text-light me-auto">Read further</a>
+                        <h3 class="align-middle" id="like_counter_'.$this->id.'">'
+                            . 
+                            htmlentities($this->rank)
+                            .
+                        '</h3>';
                     if(isset($_SESSION[User::$UserSessionId]))
                     {
                         $like = TopicLike::fetchByUserIdAndTopicId($_SESSION[User::$UserSessionId], $this->id)[0];
@@ -240,6 +245,7 @@ class Topic extends Model
             'content' => $this->content,
             'creation_timestamp' => $this->creation_timestamp,
             'update_timestamp' => date("Y-m-d H:i:s"),
+            'rank' => $this->rank,
             'status' => $this->status,
             "private_key" => $this->private_key,
             "comments_on" => $this->comments_on

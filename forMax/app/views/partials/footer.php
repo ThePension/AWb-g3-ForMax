@@ -52,6 +52,7 @@
                     // Update colors
                     let btn_like = document.getElementById("btn_like_" + topic_id_ + user_id);
                     let btn_dislike = document.getElementById("btn_dislike_" + topic_id_ + user_id);
+                    let like_counter = document.getElementById("like_counter_" + topic_id_);
 
                     if(value_ == 1)
                     {
@@ -60,6 +61,9 @@
 
                         btn_dislike.classList.remove("btn-danger");
                         btn_dislike.classList.add("btn-secondary");
+
+                        count = parseInt(like_counter.textContent);
+                        like_counter.textContent = count + 1;
                     }
                     else
                     {
@@ -68,6 +72,9 @@
 
                         btn_dislike.classList.remove("btn-secondary");
                         btn_dislike.classList.add("btn-danger");
+
+                        count = parseInt(like_counter.textContent);
+                        like_counter.textContent = count - 1;
                     }
                 }
             }
