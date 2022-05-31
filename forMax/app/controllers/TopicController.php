@@ -94,7 +94,7 @@ class TopicController
 
             $topic = Topic::fetchId($id);
 
-            $comments = Comment::fetchByTopicId($id);
+            $comments = Comment::fetchAllByTopicIdOrderBy($id, "likes");
 
             return Helper::view("topic_show",[
                 'topic' => $topic,
