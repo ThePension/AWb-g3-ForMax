@@ -142,7 +142,15 @@ class UserController
     public function account()
     {
         // TODO
+        $user = User::fetchId($_SESSION[User::$UserSessionId]);
         
-        return Helper::view("account");
+        return Helper::view("account", [
+            'user' => $user
+        ]);
+    }
+
+    public function accountUpdate()
+    {
+        // TODO
     }
 }
