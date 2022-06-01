@@ -93,6 +93,31 @@ class TopicController
             $id = $_GET['id'];
 
             $topic = Topic::fetchId($id);
+            $user_id = $_SESSION[User::$UserSessionId] ?? null;
+
+            switch ($topic->status)
+            {
+                case 'HIDDEN':
+                    if($user_id != $topic->fk_user)
+                    {
+                        Helper::redirect(Helper::createUrl("topic_show_all"));
+                    }
+                    break;
+
+                case 'PRIVATE':
+                    if($user_id != $topic->fk_user)
+                    {
+                        if(!isset($_SESSION['private_key_validation']) || $_SESSION['private_key_validation'] != "OK")
+                        {
+                            Helper::redirect(Helper::createUrl("topic_show_all"));
+                        }
+                    }
+                    break;
+
+                case 'PUBLIC':
+                    // Nothing to do
+                    break;
+            }
 
             $comments = Comment::fetchAllByTopicIdOrderBy($id, "likes");
 
@@ -360,6 +385,7 @@ class TopicController
     {
         $user_id = $_SESSION[User::$UserSessionId] ?? null;
         $private_topic_key = $_POST['private_topic_key'] ?? null;
+        unset($_SESSION['private_key_validation']);
 
         if($user_id == null)
         {
@@ -388,6 +414,7 @@ class TopicController
             Helper::redirect(Helper::createUrl("topic_subscribe"));
         }
 
+        $_SESSION['private_key_validation'] = "OK";
         $path_to_topic = Helper::createUrl("topic_show") . "?id=" . htmlentities(array_values($private_topic)[0]->id);
         Helper::redirect($path_to_topic);
     }

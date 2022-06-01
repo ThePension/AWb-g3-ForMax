@@ -68,6 +68,11 @@ class UserController
             unset($_SESSION[User::$UserAccessLevel]);
         }
 
+        if(isset($_SESSION['private_key_validation']))
+        {
+            unset($_SESSION['private_key_validation']);
+        }
+
         Helper::view("logout");
     }
 
