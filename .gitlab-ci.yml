@@ -11,4 +11,3 @@ deploy_prod:
         - git pull origin main
     only:
         - main
-
