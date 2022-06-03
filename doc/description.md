@@ -39,8 +39,8 @@ Il y aura aussi deux types d'utilisateurs, des utilisateurs authentifiés classi
 | 4 | Mode visiteur | DONE |
 | 5 | Mise en place des sujets privés avec clé d'accès | DONE |
 | 6 | Espace commentaire + Like, Dislike | DONE |
-| 7 | Possibilité de personnaliser son compte | TODO |
-| 8 | Notifications asynchrones | TODO |
+| 7 | Possibilité de personnaliser son compte | DOING |
+| 8 | Notifications asynchrones | DONE |
 | 9 | Sujets favoris plus facilement accessibles | TODO |
 | 10 | Ordonner les sujets en fonction de leur référencement | TODO |
 
