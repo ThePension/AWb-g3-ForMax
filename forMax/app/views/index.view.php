@@ -1,7 +1,7 @@
 <?php
     $title = "ForMax - home";
     $pageTitle = "";
-    require('partials/header.php')
+    require('partials/header.php');
 ?>
 
 <?php
