@@ -28,3 +28,5 @@ forMax/config.php
 /forMax/tests/end-to-end/*.log
 /forMax/tests/end-to-end/*.out
 /forMax/tests/end-to-end/*.php
+
+/.phar
