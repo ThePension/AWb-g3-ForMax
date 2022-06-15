@@ -92,4 +92,9 @@ class User extends Model
 
         Model::create("user", $user_values);
     } 
+
+    public function remove()
+    {
+        Model::delete('user', $this->id);
+    }
 }

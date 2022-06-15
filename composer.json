@@ -1,0 +1,11 @@
+
+{
+    "autoload": {
+        "classmap": [
+            "forMax/*"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}
