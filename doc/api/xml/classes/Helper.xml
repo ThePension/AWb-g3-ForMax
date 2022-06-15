@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Helper" namespace="" name="Helper" abstract="false" final="false" start="6" end="93">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/helpers" file="Helper.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/helpers/Helper.php" size="2239" time="2022-05-31T10:07:42+02:00" unixtime="1653984462" sha1="14a8e14952c5026999368072cf6016d8c09fccda" relative="helpers/Helper.php"/>
+  <docblock>
+    <description/>
+  </docblock>
+  <member name="install_prefix" visibility="public" static="true" line="8"/>
+  <method name="display" start="10" end="15" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dd" start="18" end="25" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="view" start="27" end="33" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="Importe les variables dans la table des symboles" line="29"/>
+      <comment value="voir: http://php.net/manual/fr/function.extract." line="30"/>
+      <comment value="voir aussi la méthode compact()" line="31"/>
+    </inline>
+  </method>
+  <method name="redirect" start="35" end="39" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createUrl" start="41" end="49" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="route" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="userAuthenticated" start="51" end="58" abstract="false" final="false" static="true" visibility="public"/>
+  <method name="userIsGuest" start="60" end="63" abstract="false" final="false" static="true" visibility="public"/>
+  <method name="routeGuestAuthorized" start="65" end="74" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="routeAuthorized" start="76" end="87" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getAjaxResponse" start="89" end="92" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="message" byreference="false" type="{unknown}"/>
+  </method>
+</class>

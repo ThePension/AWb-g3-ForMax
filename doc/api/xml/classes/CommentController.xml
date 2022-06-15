@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="CommentController" namespace="" name="CommentController" abstract="false" final="false" start="3" end="200">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers" file="CommentController.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers/CommentController.php" size="7830" time="2022-05-31T10:57:09+02:00" unixtime="1653987429" sha1="6e2144e3a6b5afe52ea82d2f7b56cc2d5e6b3097" relative="app/controllers/CommentController.php"/>
+  <method name="addComment" start="5" end="59" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="updateComment" start="61" end="135" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="removeComment" start="137" end="199" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="If the logged in user is not the owner and is not the owner of the topic" line="177"/>
+    </inline>
+  </method>
+</class>

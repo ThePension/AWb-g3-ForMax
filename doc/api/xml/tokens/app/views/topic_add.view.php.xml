@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/views" file="topic_add.view.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/views/topic_add.view.php" size="2672" time="2022-05-25T15:37:15+02:00" unixtime="1653485835" sha1="e9ada24d0e3c85c9af04c40fcfd4ad7bb163b861" relative="app/views/topic_add.view.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_VARIABLE">$title</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"ForMax - topic"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3">
+    <token name="T_VARIABLE">$pageTitle</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"Write a new topic"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="4">
+    <token name="T_VARIABLE">$active</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'topics'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="5">
+    <token name="T_REQUIRE">require</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'partials/header.php'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="6">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="7"/>
+  <line no="8">
+    <token name="T_INLINE_HTML">&lt;main&gt;</token>
+  </line>
+  <line no="9">
+    <token name="T_INLINE_HTML">	&lt;div class="container"&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">        &lt;form class="row" method="POST" action="/</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Helper</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">createUrl</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"topic_add_do"</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">"&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">            &lt;div class="col-12 mb-3"&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">                &lt;label for="topic_name" class="form-label"&gt;Name&lt;/label&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">                &lt;input type="text" class="form-control" id="topic_name" name="topic_name" required&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">            &lt;div class="col-12 mb-3"&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">                &lt;label for="topic_status" class="form-label"&gt;Status&lt;/label&gt;</token>
+  </line>
+  <line no="17">
+    <token name="T_INLINE_HTML">                &lt;select class="form-select" id="topic_status" name="topic_status" onchange="topic_status_changed(this.value)"&gt;</token>
+  </line>
+  <line no="18">
+    <token name="T_INLINE_HTML">                    &lt;option selected value="PUBLIC"&gt;Public (Everyone can access your topic)&lt;/option&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">                    &lt;option value="PRIVATE"&gt;Private (Only people owning the topic's private key can access your topic)&lt;/option&gt;</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">                    &lt;option value="HIDDEN"&gt;Hidden (Only you can access your topic)&lt;/option&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">                &lt;/select&gt;</token>
+  </line>
+  <line no="22">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="23"/>
+  <line no="24">
+    <token name="T_INLINE_HTML">            &lt;div class="mb-3"&gt;</token>
+  </line>
+  <line no="25">
+    <token name="T_INLINE_HTML">                &lt;label for="topic_comments_on" class="form-label"&gt;Active comments ?&lt;/label&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">                &lt;input type="checkbox" checked name="topic_comments_on" id="topic_comments_on" /&gt;</token>
+  </line>
+  <line no="27">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="28"/>
+  <line no="29">
+    <token name="T_INLINE_HTML">            &lt;div id="private_key_box" class="col-12 mb-3 d-none"&gt;</token>
+  </line>
+  <line no="30">
+    <token name="T_INLINE_HTML">                &lt;label for="topic_private_key" class="form-label"&gt;Private key&lt;/label&gt;</token>
+  </line>
+  <line no="31">
+    <token name="T_INLINE_HTML">                &lt;input type="text" class="form-control" id="topic_private_key" name="topic_private_key"&gt;</token>
+  </line>
+  <line no="32">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="33"/>
+  <line no="34">
+    <token name="T_INLINE_HTML">            &lt;div class="col-12 mb-3"&gt;</token>
+  </line>
+  <line no="35">
+    <token name="T_INLINE_HTML">                &lt;label for="topic_content" class="form-label"&gt;Content&lt;/label&gt;</token>
+  </line>
+  <line no="36">
+    <token name="T_INLINE_HTML">                &lt;textarea rows="5" class="form-control" name="topic_content" id="topic_content" required&gt;&lt;/textarea&gt;</token>
+  </line>
+  <line no="37">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="38">
+    <token name="T_INLINE_HTML">            &lt;div class="d-grid gap-2 d-md-flex justify-content-md-end"&gt;</token>
+  </line>
+  <line no="39">
+    <token name="T_INLINE_HTML">                &lt;a href="/</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Helper</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">createUrl</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"topic_show_all"</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">"&gt;&lt;button class="btn btn-secondary me-md-2" type="button"&gt;Abort&lt;/button&gt;&lt;/a&gt;</token>
+  </line>
+  <line no="40">
+    <token name="T_INLINE_HTML">                &lt;button type="submit" class="text-light btn btn-success"&gt;Create topic&lt;/button&gt;</token>
+  </line>
+  <line no="41">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="42">
+    <token name="T_INLINE_HTML">        &lt;/form&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">	&lt;/div&gt;</token>
+  </line>
+  <line no="44">
+    <token name="T_INLINE_HTML">&lt;/main&gt;</token>
+  </line>
+  <line no="45"/>
+  <line no="46">
+    <token name="T_INLINE_HTML">&lt;script&gt;</token>
+  </line>
+  <line no="47">
+    <token name="T_INLINE_HTML">    function topic_status_changed(val)</token>
+  </line>
+  <line no="48">
+    <token name="T_INLINE_HTML">    {</token>
+  </line>
+  <line no="49">
+    <token name="T_INLINE_HTML">        // Toggle private key input</token>
+  </line>
+  <line no="50">
+    <token name="T_INLINE_HTML">        if(val == "PRIVATE")</token>
+  </line>
+  <line no="51">
+    <token name="T_INLINE_HTML">        {</token>
+  </line>
+  <line no="52">
+    <token name="T_INLINE_HTML">            document.getElementById("private_key_box").classList.remove("d-none");</token>
+  </line>
+  <line no="53">
+    <token name="T_INLINE_HTML">        }</token>
+  </line>
+  <line no="54">
+    <token name="T_INLINE_HTML">        else</token>
+  </line>
+  <line no="55">
+    <token name="T_INLINE_HTML">        {</token>
+  </line>
+  <line no="56">
+    <token name="T_INLINE_HTML">            document.getElementById("private_key_box").classList.add("d-none");</token>
+  </line>
+  <line no="57">
+    <token name="T_INLINE_HTML">        }</token>
+  </line>
+  <line no="58">
+    <token name="T_INLINE_HTML">    }</token>
+  </line>
+  <line no="59">
+    <token name="T_INLINE_HTML">&lt;/script&gt;</token>
+  </line>
+  <line no="60"/>
+  <line no="61">
+    <token name="T_OPEN_TAG">&lt;?php </token>
+    <token name="T_REQUIRE">require</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'partials/footer.php'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="62"/>
+</source>

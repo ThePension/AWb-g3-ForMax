@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App" namespace="" name="App" abstract="false" final="false" start="3" end="26">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core" file="App.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core/App.php" size="511" time="2022-03-30T08:51:08+02:00" unixtime="1648623068" sha1="cc3f44971e950895aa39f53afb2521256ec8defe" relative="core/App.php"/>
+  <member name="app" default="" type="array" visibility="protected" static="true" line="5"/>
+  <method name="get" start="7" end="15" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="set" start="17" end="20" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="load_config" start="22" end="25" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="fileName" byreference="false" type="{unknown}"/>
+  </method>
+</class>

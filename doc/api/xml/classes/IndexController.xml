@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="IndexController" namespace="" name="IndexController" abstract="false" final="false" start="3" end="24">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers" file="IndexController.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers/IndexController.php" size="344" time="2022-05-19T14:02:34+02:00" unixtime="1652961754" sha1="5f6c33746fc7446ed789c9a3e8fa6e9013f2e25a" relative="app/controllers/IndexController.php"/>
+  <method name="index" start="10" end="13" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="index"/>
+      <return description="Index" type="object">
+        <type full="view" namespace="" name="view"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="about" start="20" end="23" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="about"/>
+      <return description="About" type="object">
+        <type full="view" namespace="" name="view"/>
+      </return>
+    </docblock>
+  </method>
+</class>

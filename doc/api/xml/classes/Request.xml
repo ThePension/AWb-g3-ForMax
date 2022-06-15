@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Request" namespace="" name="Request" abstract="false" final="false" start="7" end="15">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core" file="Request.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core/Request.php" size="318" time="2022-03-30T08:51:08+02:00" unixtime="1648623068" sha1="3786467a3d07219d4b914dcf7b2f1c351070f239" relative="core/Request.php"/>
+  <docblock>
+    <description compact="Helper class providing static methods for handling, cleaning, etc.">a request uri</description>
+  </docblock>
+  <method name="uri" start="9" end="14" abstract="false" final="false" static="true" visibility="public">
+    <inline>
+      <comment value="trim: strip whitespace (or other characters) from the beginning" line="11"/>
+      <comment value="and end of a string" line="12"/>
+    </inline>
+  </method>
+</class>

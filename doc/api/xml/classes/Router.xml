@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Router" namespace="" name="Router" abstract="false" final="false" start="3" end="76">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core" file="Router.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/core/Router.php" size="2468" time="2022-03-30T08:51:08+02:00" unixtime="1648623068" sha1="bdf3c802e871bed5be6ae6719a5b9c2074d776ad" relative="core/Router.php"/>
+  <member name="routes" default="" type="array" visibility="protected" static="false" line="5"/>
+  <method name="define" start="7" end="10" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="routes" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="direct" start="12" end="47" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="example.com/about/us" line="14"/>
+      <comment value="Remove the parameters" line="15"/>
+      <comment value="more info: http://php.net/manual/en/function.parse-url.php" line="16"/>
+      <comment value="remove installation prefix" line="18"/>
+    </inline>
+  </method>
+  <method name="callAction" start="51" end="64" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="controller" byreference="false" type="{unknown}"/>
+    <parameter name="action" byreference="false" type="string" default="'index'"/>
+  </method>
+  <method name="load" start="66" end="75" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="About 'new static':" line="68"/>
+      <comment value="more info: http://php.net/manual/en/language.oop5.late-static-bindings.php" line="69"/>
+      <comment value="and here: https://stackoverflow.com/questions/15898843/what-means-new-static" line="70"/>
+    </inline>
+  </method>
+</class>

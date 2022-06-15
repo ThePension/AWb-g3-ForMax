@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/views" file="register.view.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/views/register.view.php" size="2340" time="2022-05-25T15:37:15+02:00" unixtime="1653485835" sha1="d4f1490974e258b31705220712e4d3901faa9039" relative="app/views/register.view.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_VARIABLE">$title</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"ForMax - register"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_VARIABLE">$pageTitle</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">""</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="4">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_REQUIRE">require</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'partials/header.php'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="5">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="6"/>
+  <line no="7">
+    <token name="T_INLINE_HTML">&lt;!-- Based on https://mdbootstrap.com/docs/standard/extended/registration/ --&gt;</token>
+  </line>
+  <line no="8"/>
+  <line no="9">
+    <token name="T_INLINE_HTML">&lt;div class="mask d-flex align-items-center h-100 gradient-custom-3"&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">    &lt;div class="container h-100"&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">        &lt;div class="row d-flex justify-content-center align-items-center h-100"&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">            &lt;div class="col-12 col-md-9 col-lg-7 col-xl-6"&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">                &lt;div class="card" style="border-radius: 15px;"&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">                    &lt;div class="card-body p-5"&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">                        &lt;h2 class="text-uppercase text-center mb-5"&gt;Create an account&lt;/h2&gt;</token>
+  </line>
+  <line no="16"/>
+  <line no="17">
+    <token name="T_INLINE_HTML">                        &lt;form method="POST" action="/</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Helper</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">createUrl</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"register_do"</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">"&gt;</token>
+  </line>
+  <line no="18">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-outline mb-4"&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">                                &lt;input type="text" id="username"  name="username" class="form-control form-control-lg" /&gt;</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">                                &lt;label class="form-label" for="username"&gt;Username&lt;/label&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="22"/>
+  <line no="23">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-outline mb-4"&gt;</token>
+  </line>
+  <line no="24">
+    <token name="T_INLINE_HTML">                                &lt;input type="password" id="password" name="password" class="form-control form-control-lg" /&gt;</token>
+  </line>
+  <line no="25">
+    <token name="T_INLINE_HTML">                                &lt;label class="form-label" for="password"&gt;Password&lt;/label&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="27"/>
+  <line no="28">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-outline mb-4"&gt;</token>
+  </line>
+  <line no="29">
+    <token name="T_INLINE_HTML">                                &lt;input type="password" id="password_repeat" name="password_repeat" class="form-control form-control-lg" /&gt;</token>
+  </line>
+  <line no="30">
+    <token name="T_INLINE_HTML">                                &lt;label class="form-label" for="password_repeat"&gt;Repeat your password&lt;/label&gt;</token>
+  </line>
+  <line no="31">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="32"/>
+  <line no="33">
+    <token name="T_INLINE_HTML">                            &lt;div class="d-flex justify-content-center"&gt;</token>
+  </line>
+  <line no="34">
+    <token name="T_INLINE_HTML">                                &lt;button type="submit" class="btn btn-info btn-block btn-lg text-body text-light"&gt;Register&lt;/button&gt;</token>
+  </line>
+  <line no="35">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="36"/>
+  <line no="37">
+    <token name="T_INLINE_HTML">                            &lt;p class="text-center text-muted mt-5 mb-0"&gt;Have already an account? &lt;a href="/</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Helper</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">createUrl</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"login"</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">" class="fw-bold text-body"&gt;&lt;u&gt;Login here&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;</token>
+  </line>
+  <line no="38">
+    <token name="T_INLINE_HTML">                        &lt;/form&gt;</token>
+  </line>
+  <line no="39">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="40">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="41">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="42">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;</token>
+  </line>
+  <line no="44">
+    <token name="T_INLINE_HTML">&lt;/div&gt;</token>
+  </line>
+  <line no="45"/>
+  <line no="46">
+    <token name="T_OPEN_TAG">&lt;?php </token>
+    <token name="T_REQUIRE">require</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'partials/footer.php'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="47"/>
+</source>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Topic" namespace="" name="Topic" abstract="false" final="false" start="3" end="278">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/models" file="Topic.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/models/Topic.php" size="9865" time="2022-05-31T11:04:17+02:00" unixtime="1653987857" sha1="a363ac81e9e5379c35da38469a0464b02ab931b9" relative="app/models/Topic.php"/>
+  <extends full="Model" namespace="" name="Model"/>
+  <member name="id" visibility="private" static="false" line="5"/>
+  <member name="name" visibility="private" static="false" line="6"/>
+  <member name="content" visibility="private" static="false" line="7"/>
+  <member name="rank" visibility="private" static="false" line="8"/>
+  <member name="update_timestamp" visibility="private" static="false" line="9"/>
+  <member name="creation_timestamp" visibility="private" static="false" line="10"/>
+  <member name="fk_user" visibility="private" static="false" line="11"/>
+  <member name="status" visibility="private" static="false" line="12"/>
+  <member name="private_key" visibility="private" static="false" line="13"/>
+  <member name="comments_on" visibility="private" static="false" line="14"/>
+  <method name="__set" start="23" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="__set"/>
+      <param description="Is the property name" type="mixed" variable="$property"/>
+      <param description="is the value to be set" type="mixed" variable="$value"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="property" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="__get" start="34" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="__get"/>
+      <param description="The property name" type="mixed" variable="$property"/>
+      <return description="The property value" type="mixed"/>
+    </docblock>
+    <parameter name="property" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fetchAll" start="44" end="49" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="fetchAll"/>
+      <return description="of topics" type="object">
+        <type full="Array" namespace="" name="Array"/>
+      </return>
+    </docblock>
+    <inline>
+      <todo value=": Upgrade" line="48"/>
+    </inline>
+  </method>
+  <method name="fetchAllOrderBy" start="51" end="54" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="column" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fetchId" start="62" end="68" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="fetchId"/>
+      <param description="The ID of the topic" type="mixed" variable="$id"/>
+      <return description="The topic that is matching the ID" type="object">
+        <type full="Topic" namespace="" name="Topic"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="ASSUMPTION" line="64"/>
+      <comment value="- $id was validated by the caller" line="65"/>
+    </inline>
+  </method>
+  <method name="save" start="75" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="save The topic in the database"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getAsBootstrapGridForHomePage" start="97" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="getAsBootstrapGridForHomePage"/>
+      <return description="That contains the HTML code for displaying the topic in the homepage" type="string"/>
+    </docblock>
+  </method>
+  <method name="getAsBootstrapGridForTopicPage" start="165" end="224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="getAsBootstrapGridForTopicPage"/>
+      <return description="That contains the HTML code for displaying the topic in the topicpage" type="string"/>
+    </docblock>
+    <inline>
+      <comment value="If the user is logged in" line="182"/>
+    </inline>
+  </method>
+  <method name="getTitleForTopicPage" start="231" end="234" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="getTitleForTopicPage"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="modify" start="241" end="256" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="modify the topic in the database"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="remove" start="263" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="remove the topic from the database"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="whoWroteTopic" start="273" end="277" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="whoWroteTopic"/>
+      <return description="the author of the topic" type="string"/>
+    </docblock>
+  </method>
+  <parent full="Model" namespace="" name="Model">
+    <method name="create" start="13" end="26" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="INSERT INTO"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="Arrays of parameters" type="object" variable="$params">
+          <type full="Array" namespace="" name="Array"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="$keys = implode(&quot;, &quot;, array_map(function ($key) { return &quot;`{$key}`&quot;;}, array_keys($params)));" line="20"/>
+      </inline>
+    </method>
+    <method name="readAll" start="34" end="42" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT * FROM"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The class name" type="object" variable="$className">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <return description="The model" type="object">
+          <type full="Array" namespace="" name="Array"/>
+        </return>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="readAllOrderBy" start="51" end="59" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT * FROM ORDER BY"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The class name" type="object" variable="$className">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The column name" type="object" variable="$orderBy">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <return description="The model" type="object">
+          <type full="Array" namespace="" name="Array"/>
+        </return>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+      <parameter name="orderBy" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="readAllByIdOrderBy" start="68" end="77" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT * FROM ORDER BY"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The class name" type="object" variable="$className">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The column name" type="object" variable="$orderBy">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <return description="The model" type="object">
+          <type full="Array" namespace="" name="Array"/>
+        </return>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+      <parameter name="id" byreference="false" type="{unknown}"/>
+      <parameter name="orderBy" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="readById" start="85" end="95" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT * FROM $table WHERE Id"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The class name" type="object" variable="$className">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The id" type="object" variable="$id">
+          <type full="String" namespace="" name="String"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+      <parameter name="id" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="readByCriteria" start="106" end="116" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT * FROM $table WHERE $criteria=$criteriaValue"/>
+        <param description="Table name" type="mixed" variable="$table"/>
+        <param description="Class name" type="mixed" variable="$className"/>
+        <param description="Criteria name" type="mixed" variable="$criteria"/>
+        <param description="Criteria value" type="mixed" variable="$criteraValue"/>
+        <return type="object">
+          <type full="Array" namespace="" name="Array"/>
+        </return>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+      <parameter name="criteria" byreference="false" type="{unknown}"/>
+      <parameter name="criteriaValue" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="readByCriterias" start="126" end="145" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="SELECT"/>
+        <param description="Table name" type="mixed" variable="$table"/>
+        <param description="Class name" type="mixed" variable="$className"/>
+        <param description="Associative array containing criterias names and criterias values" type="mixed" variable="$criterias"/>
+        <return type="object">
+          <type full="Array" namespace="" name="Array"/>
+        </return>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="className" byreference="false" type="{unknown}"/>
+      <parameter name="criterias" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="update" start="153" end="162" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="UPDATE"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="Id" type="object" variable="$id">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The parameters to update" type="object" variable="$params">
+          <type full="Array" namespace="" name="Array"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="id" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="updateByCriterias" start="170" end="190" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="UPDATE"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="Id" type="object" variable="$id">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The parameters to update" type="object" variable="$params">
+          <type full="Array" namespace="" name="Array"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="criterias" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="delete" start="197" end="207" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="DELETE FROM"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="Id" type="object" variable="$id">
+          <type full="String" namespace="" name="String"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="id" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="deleteByCriteria" start="214" end="229" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="DELETE FROM"/>
+        <param description="Table name" type="object" variable="$table">
+          <type full="String" namespace="" name="String"/>
+        </param>
+        <param description="The criterias" type="object" variable="$criterias">
+          <type full="Array" namespace="" name="Array"/>
+        </param>
+      </docblock>
+      <parameter name="table" byreference="false" type="{unknown}"/>
+      <parameter name="criterias" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

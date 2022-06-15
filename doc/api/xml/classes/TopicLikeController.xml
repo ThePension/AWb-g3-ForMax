@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="TopicLikeController" namespace="" name="TopicLikeController" abstract="false" final="false" start="3" end="72">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers" file="TopicLikeController.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers/TopicLikeController.php" size="2103" time="2022-05-31T10:36:40+02:00" unixtime="1653986200" sha1="2a05b061d72f77b48f804dc6e282a636130299e1" relative="app/controllers/TopicLikeController.php"/>
+  <method name="addOrUpdateLike" start="5" end="71" abstract="false" final="false" static="false" visibility="public"/>
+</class>

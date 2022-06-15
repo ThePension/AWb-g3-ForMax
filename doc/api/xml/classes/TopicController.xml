@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="TopicController" namespace="" name="TopicController" abstract="false" final="false" start="3" end="421">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers" file="TopicController.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/app/controllers/TopicController.php" size="13585" time="2022-06-01T10:30:19+02:00" unixtime="1654072219" sha1="fd481fca8404bd0a115e337c02398d84e21a638c" relative="app/controllers/TopicController.php"/>
+  <method name="showAddTopicView" start="11" end="14" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="showAddTopicView"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="addTopic" start="21" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="addTopic"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="Shorthand for 'isset() ? ... : ...'" line="32"/>
+    </inline>
+  </method>
+  <method name="showTopicView" start="89" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="showTopicView"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="deleteTopic" start="136" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="deleteTopic"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="showUpdateTopicView" start="187" end="219" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="showUpdateTopicView"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="updateTopic" start="226" end="302" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="updateTopic"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="showAllTopics" start="309" end="340" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="showAllTopics"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="SEARCH PARAMETER" line="317"/>
+    </inline>
+  </method>
+  <method name="makeFavorite" start="347" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="makeFavorite"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <inline>
+      <todo value="" line="349"/>
+    </inline>
+  </method>
+  <method name="showMyTopics" start="357" end="377" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="showMyTopics"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="showSubscribe" start="379" end="382" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="subscribe" start="384" end="420" abstract="false" final="false" static="false" visibility="public"/>
+</class>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax">
+  <namespace name="">
+    <class name="CommentController" src="app/controllers/CommentController.php" xml="classes/CommentController.xml"/>
+    <class name="CommentLikeController" src="app/controllers/CommentLikeController.php" xml="classes/CommentLikeController.xml"/>
+    <class name="IndexController" src="app/controllers/IndexController.php" xml="classes/IndexController.xml"/>
+    <class name="TopicController" src="app/controllers/TopicController.php" xml="classes/TopicController.xml"/>
+    <class name="TopicLikeController" src="app/controllers/TopicLikeController.php" xml="classes/TopicLikeController.xml"/>
+    <class name="UserController" src="app/controllers/UserController.php" xml="classes/UserController.xml"/>
+    <class name="Comment" src="app/models/Comment.php" xml="classes/Comment.xml"/>
+    <class name="CommentLike" src="app/models/CommentLike.php" xml="classes/CommentLike.xml"/>
+    <class name="Topic" src="app/models/Topic.php" xml="classes/Topic.xml"/>
+    <class name="TopicLike" src="app/models/TopicLike.php" xml="classes/TopicLike.xml"/>
+    <class name="User" src="app/models/User.php" xml="classes/User.xml"/>
+    <class name="App" src="core/App.php" xml="classes/App.xml"/>
+    <class name="Connection" src="core/database/Connection.php" xml="classes/Connection.xml"/>
+    <class name="Model" src="core/database/Model.php" description="Abstract class forcing extending class (AppQueryBuilder) to inherit this class" xml="classes/Model.xml"/>
+    <class name="Request" src="core/Request.php" description="Helper class providing static methods for handling, cleaning, etc." xml="classes/Request.xml"/>
+    <class name="Router" src="core/Router.php" xml="classes/Router.xml"/>
+    <class name="Helper" src="helpers/Helper.php" xml="classes/Helper.xml"/>
+    <class name="UserTest" src="tests/CommentLikeTest.php" xml="classes/UserTest.xml"/>
+  </namespace>
+</index>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="UserTest" namespace="" name="UserTest" abstract="false" final="true" start="4" end="96">
+  <file path="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/tests" file="CommentLikeTest.php" realpath="C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/awb-g3-formax/forMax/tests/CommentLikeTest.php" size="2775" time="2022-06-15T09:24:54+02:00" unixtime="1655277894" sha1="3a5a71acefddc180087b18172bdb5f27a964c0ae" relative="tests/CommentLikeTest.php"/>
+  <extends full="PHPUnit\Framework\TestCase" namespace="PHPUnit\Framework" name="TestCase" unresolved="true"/>
+  <method name="testUserCreateAndReadFromDatabase" start="6" end="51" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Load config" line="8"/>
+      <comment value="Delete the user if already exists" line="15"/>
+      <comment value="Create and save user" line="21"/>
+      <comment value="Fetch the user" line="30"/>
+    </inline>
+  </method>
+  <method name="testRemoveUserInDatabse" start="53" end="80" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Create and save a user" line="55"/>
+      <comment value="Fetch the user" line="63"/>
+      <comment value="Remove the user" line="71"/>
+      <comment value="Fetch the user" line="74"/>
+    </inline>
+  </method>
+  <method name="testDuplicateUserInDatabase" start="82" end="95" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Create a user and save twice" line="86"/>
+    </inline>
+  </method>
+</class>
